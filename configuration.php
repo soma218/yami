@@ -9,7 +9,7 @@ class JConfig {
 	public $captcha = '0';
 	public $list_limit = '20';
 	public $access = '1';
-	public $debug = '0';
+	public $debug = '1';
 	public $debug_lang = '0';
 	public $dbtype = 'mysql';
 	public $host = 'localhost';
@@ -21,7 +21,7 @@ class JConfig {
 	public $secret = '884ZKFvkCBkNpx72';
 	public $gzip = '0';
 	public $error_reporting = 'default';
-	public $helpurl = 'http://help.joomla.org/proxy/index.php?option=com_help&amp;keyref=Help{major}{minor}:{keyref}';
+	public $helpurl = 'http://help.joomla.org/proxy/index.php?option=com_help&keyref=Help{major}{minor}:{keyref}';
 	public $ftp_host = '127.0.0.1';
 	public $ftp_port = '21';
 	public $ftp_user = '';
@@ -39,7 +39,7 @@ class JConfig {
 	public $smtphost = 'localhost';
 	public $smtpsecure = 'none';
 	public $smtpport = '25';
-	public $caching = '0';
+	public $caching = '2';
 	public $cache_handler = 'file';
 	public $cachetime = '15';
 	public $MetaDesc = '';
@@ -55,6 +55,12 @@ class JConfig {
 	public $feed_limit = '10';
 	public $log_path = 'E:\\xampp\\htdocs\\docs\\joomla/logs';
 	public $tmp_path = 'E:\\xampp\\htdocs\\docs\\joomla/tmp';
-	public $lifetime = '15';
+	public $lifetime = '240';
 	public $session_handler = 'database';
+	public $MetaRights = '';
+	public $sitename_pagetitles = '0';
+	public $force_ssl = '0';
+	public $feed_email = 'author';
+	public $cookie_domain = '';
+	public $cookie_path = '';
 }
