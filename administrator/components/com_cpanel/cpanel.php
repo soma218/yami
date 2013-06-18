@@ -9,7 +9,6 @@
 defined('_JEXEC') or die;
 
 // No access check.
-
 $controller	= JControllerLegacy::getInstance('Cpanel');
 $controller->execute(JRequest::getCmd('task'));
 $controller->redirect();

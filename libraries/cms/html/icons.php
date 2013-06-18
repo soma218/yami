@@ -47,7 +47,7 @@ abstract class JHtmlIcons
 	 * @since   2.5
 	 */
 	public static function button($button)
-	{
+	{  
 		$user = JFactory::getUser();
 		if (!empty($button['access']))
 		{

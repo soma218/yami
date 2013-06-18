@@ -23,6 +23,5 @@ $lang		= JFactory::getLanguage();
 $user		= JFactory::getUser();
 $menu		= new JAdminCSSMenu();
 $enabled	= JRequest::getInt('hidemainmenu') ? false : true;
-
 // Render the module layout
 require JModuleHelper::getLayoutPath('mod_menu', $params->get('layout', 'default'));

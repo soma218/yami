@@ -9,7 +9,7 @@ class JConfig {
 	public $captcha = '0';
 	public $list_limit = '20';
 	public $access = '1';
-	public $debug = '1';
+	public $debug = '0';
 	public $debug_lang = '0';
 	public $dbtype = 'mysql';
 	public $host = 'localhost';
@@ -39,7 +39,7 @@ class JConfig {
 	public $smtphost = 'localhost';
 	public $smtpsecure = 'none';
 	public $smtpport = '25';
-	public $caching = '2';
+	public $caching = '0';
 	public $cache_handler = 'file';
 	public $cachetime = '15';
 	public $MetaDesc = '';
@@ -53,9 +53,9 @@ class JConfig {
 	public $sef_suffix = '0';
 	public $unicodeslugs = '0';
 	public $feed_limit = '10';
-	public $log_path = 'E:\\xampp\\htdocs\\docs\\joomla/logs';
+	public $log_path = 'E:\\xampp\\htdocs\\docs\\joomla/vmfiles';
 	public $tmp_path = 'E:\\xampp\\htdocs\\docs\\joomla/tmp';
-	public $lifetime = '240';
+	public $lifetime = '15';
 	public $session_handler = 'database';
 	public $MetaRights = '';
 	public $sitename_pagetitles = '0';

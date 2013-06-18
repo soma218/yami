@@ -36,7 +36,6 @@ class CpanelViewCpanel extends JViewLegacy
 
 		// Display the cpanel modules
 		$this->modules = JModuleHelper::getModules('cpanel');
-
 		parent::display($tpl);
 	}
 }

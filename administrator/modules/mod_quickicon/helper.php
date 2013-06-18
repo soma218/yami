@@ -125,7 +125,7 @@ abstract class modQuickIconHelper
 			}
 
 			// Include buttons defined by published quickicon plugins
-			JPluginHelper::importPlugin('quickicon');
+		/*JPluginHelper::importPlugin('quickicon');
 			$app = JFactory::getApplication();
 			$arrays = (array) $app->triggerEvent('onGetIcons', array($context));
 
@@ -143,6 +143,7 @@ abstract class modQuickIconHelper
 					}
 				}
 			}
+      */
 		}
 
 		return self::$buttons[$key];
