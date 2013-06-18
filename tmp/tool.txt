@@ -1,1 +1,2 @@
 http://api.joomla.org/Joomla-Platform/Base/JNode.html
+http://joomla.github.io/joomla-platform/
