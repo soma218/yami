@@ -1,0 +1,7 @@
+菜单栏的渲染：
+1.所用的类:JMenuNode,JNode,JAdminCssMenu
+2.选择调用了3个模板（default,index,default_enabled）
+组件的渲染：
+1. 如果为$component为空，则调用默认的组件。
+url的解析
+通过JRouterSite的function parse 来解析url
