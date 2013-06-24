@@ -256,6 +256,7 @@ class InstallerModelManage extends InstallerModel
 		$query->select('2*protected+(1-protected)*enabled as status');
 		$query->from('#__extensions');
 		$query->where('state=0');
+
 		if ($status != '') {
 			if ($status == '2')
 			{
@@ -296,7 +297,7 @@ class InstallerModelManage extends InstallerModel
 	 * @since	1.6
 	 */
 	public function getForm($data = array(), $loadData = true)
-	{
+	{ 
 		// Get the form.
 		$app = JFactory::getApplication();
 		JForm::addFormPath(JPATH_COMPONENT . '/models/forms');

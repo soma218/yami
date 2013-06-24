@@ -166,7 +166,7 @@ abstract class JModelForm extends JModel
 			if (isset($options['load_data']) && $options['load_data'])
 			{
 				// Get the data for the form.
-				$data = $this->loadFormData();
+				$data = $this->loadFormData(); 
 			}
 			else
 			{
@@ -201,7 +201,7 @@ abstract class JModelForm extends JModel
 	 * @since   11.1
 	 */
 	protected function loadFormData()
-	{
+	{ 
 		return array();
 	}
 

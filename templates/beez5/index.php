@@ -8,7 +8,7 @@
 
 // No direct access.
 defined('_JEXEC') or die;
-
+var_dump($this);
 // check modules
 $showRightColumn	= ($this->countModules('position-3') or $this->countModules('position-6') or $this->countModules('position-8'));
 $showbottom			= ($this->countModules('position-9') or $this->countModules('position-10') or $this->countModules('position-11'));

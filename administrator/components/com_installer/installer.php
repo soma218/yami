@@ -15,5 +15,5 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_installer')) {
 }
 
 $controller	= JControllerLegacy::getInstance('Installer');
-$controller->execute(JRequest::getCmd('task'));
+$controller->execute(JRequest::getCmd('task')); 
 $controller->redirect();

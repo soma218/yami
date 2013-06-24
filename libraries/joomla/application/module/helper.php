@@ -361,7 +361,7 @@ abstract class JModuleHelper
 					// If this item has been excluded, keep the duplicate flag set,
 					// but remove any item from the cleaned array.
 					if ($negHit)
-					{
+					{ 
 						unset($clean[$module->id]);
 					}
 					continue;
@@ -383,6 +383,7 @@ abstract class JModuleHelper
 					$module->style = null;
 					$module->position = strtolower($module->position);
 					$clean[$module->id] = $module;
+
 				}
 			}
 

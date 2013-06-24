@@ -144,7 +144,7 @@ final class JSite extends JApplication
 	 * @param	string
 	 */
 	public function dispatch($component = null)
-	{
+	{ 
 		try
 		{
 			// Get the component if not set.

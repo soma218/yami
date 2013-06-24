@@ -351,7 +351,7 @@ class JComponentHelper
 		$contents = self::executeComponent($path);
 
 		// Build the component toolbar
-		$path = JApplicationHelper::getPath('toolbar');
+		$path = JApplicationHelper::getPath('toolbar'); 
 		if ($path && $app->isAdmin())
 		{
 			JLog::add('Files in the format toolbar.COMPONENTNAME.php are considered deprecated and will not be loaded in Joomla 3.0.', JLog::WARNING, 'deprecated');

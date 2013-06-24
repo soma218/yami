@@ -34,6 +34,7 @@ class UsersModelLogin extends JModelForm
 	{
 		// Get the form.
 		$form = $this->loadForm('com_users.login', 'login', array('load_data' => $loadData));
+
 		if (empty($form)) {
 			return false;
 		}

@@ -9,7 +9,7 @@
 defined('_JEXEC') or die;
 
 /**
- * Base controller class for Users.
+ * Base Controller Class For Users.
  *
  * @package		Joomla.Site
  * @subpackage	com_users

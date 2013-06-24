@@ -321,6 +321,7 @@ class JDocumentHTML extends JDocument
 		// If no type is specified, return the whole buffer
 		if ($type === null)
 		{
+
 			return parent::$_buffer;
 		}
 
@@ -337,6 +338,7 @@ class JDocumentHTML extends JDocument
 		}
 
 		$renderer = $this->loadRenderer($type);
+
 		if ($this->_caching == true && $type == 'modules')
 		{
 			$cache = JFactory::getCache('com_modules', '');
@@ -367,7 +369,7 @@ class JDocumentHTML extends JDocument
 
 		}
 		else
-		{
+		{ 
 			$this->setBuffer($renderer->render($name, $attribs, $result), $type, $name);
 		}
 
@@ -570,6 +572,7 @@ class JDocumentHTML extends JDocument
 
 		if (!file_exists($directory . '/' . $template . '/' . $file))
 		{
+
 			$template = 'system';
 		}
 

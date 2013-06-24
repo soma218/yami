@@ -203,6 +203,7 @@ class JView extends JObject
 	public function display($tpl = null)
 	{
 		$result = $this->loadTemplate($tpl);
+
 		if ($result instanceof Exception)
 		{
 			return $result;
@@ -372,6 +373,7 @@ class JView extends JObject
 		{
 			$model = strtolower($default);
 		}
+
 
 		// First check to make sure the model requested exists
 		if (isset($this->_models[$model]))

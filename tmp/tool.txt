@@ -1,2 +1,3 @@
 http://api.joomla.org/Joomla-Platform/Base/JNode.html
 http://joomla.github.io/joomla-platform/
+http://virtuemart.net/community/translations/virtuemart/zh-CN

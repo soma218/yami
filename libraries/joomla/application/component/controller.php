@@ -721,7 +721,7 @@ class JController extends JObject
 		{
 			$view->display();
 		}
-
+    
 		return $this;
 	}
 

@@ -608,7 +608,7 @@ class JForm
 	 * @since   11.1
 	 */
 	public function getValue($name, $group = null, $default = null)
-	{
+	{ 
 		// If a group is set use it.
 		if ($group)
 		{

@@ -103,7 +103,7 @@ class JDocumentRendererModule extends JDocumentRenderer
 
 		}
 		else
-		{
+		{ 
 			$contents = JModuleHelper::renderModule($module, $attribs);
 		}
 
