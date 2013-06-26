@@ -36,7 +36,6 @@ class UsersControllerUser extends UsersController
 		$data['username'] = JRequest::getVar('username', '', 'method', 'username');
 		$data['password'] = JRequest::getString('password', '', 'post', JREQUEST_ALLOWRAW);
 
-
 		// Set the return URL if empty.
 		if (empty($data['return'])) {
 			$data['return'] = 'index.php?option=com_users&view=profile';
@@ -58,8 +57,9 @@ class UsersControllerUser extends UsersController
 		// Perform the log in.
 		if (true === $app->login($credentials, $options)) {
 			// Success
-			$app->setUserState('users.login.form.data', array()); 
-			$app->redirect(JRoute::_($app->getUserState('users.login.form.return'), false));
+			$app->setUserState('users.login.form.data', array());
+			// $app->redirect(JRoute::_($app->getUserState('users.login.form.return'), false));
+			$app->redirect(JRoute::_('index.php', false));
 		} else {
 			// Login failed !
 			$data['remember'] = (int)$options['remember'];

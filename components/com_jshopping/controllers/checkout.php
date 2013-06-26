@@ -14,7 +14,7 @@ include_once(JPATH_COMPONENT_SITE."/payments/payment.php");
 class JshoppingControllerCheckout extends JController{
     
     function display($cachable = false, $urlparams = false){
-        $this->step2();
+        $this->step6();
     }
     
     function step2(){

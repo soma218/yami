@@ -7,7 +7,7 @@ class JConfig {
 	public $sitename = 'yami';
 	public $editor = 'tinymce';
 	public $captcha = '0';
-	public $list_limit = '20';   
+	public $list_limit = '20';
 	public $access = '1';
 	public $debug = '0';
 	public $debug_lang = '0';
@@ -42,7 +42,7 @@ class JConfig {
 	public $caching = '0';
 	public $cache_handler = 'file';
 	public $cachetime = '15';
-	public $MetaDesc = '';   
+	public $MetaDesc = '';
 	public $MetaKeys = '';
 	public $MetaTitle = '1';
 	public $MetaAuthor = '1';
@@ -55,7 +55,7 @@ class JConfig {
 	public $feed_limit = '10';
 	public $log_path = 'E:\\xampp\\htdocs\\docs\\joomla/vmfiles';
 	public $tmp_path = 'E:\\xampp\\htdocs\\docs\\joomla/tmp';
-	public $lifetime = '15';
+	public $lifetime = '15000';
 	public $session_handler = 'database';
 	public $MetaRights = '';
 	public $sitename_pagetitles = '0';

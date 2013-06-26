@@ -1,0 +1,277 @@
+/* CSS Document */
+
+/*--public--anvtop--*/
+.nav2{ height:34px; width:960px; background:url(../images/navbj3.jpg) repeat-x; float:left;}
+.nav2_left ,.nav2_right{ width:5px; height:34px; float:left; background:url(../images/navbj1.jpg) no-repeat;}
+.nav2_right{ float:right; background:url(../images/navbj2.jpg) no-repeat;}
+.menu{ float:left; margin-left:12px; display:inline;}
+.menu li{ float:left; height:32px; line-height:32px; margin-left:1px; display:inline;}
+.menu li a{ display:block; padding:0 22px; color:#fff;}
+.menu li a:hover ,.menu .menua{ background:url(../images/navbj4.jpg) repeat-x; color:#000; text-decoration:none}
+
+.location{ height:35px; width:960px; margin:0 auto; line-height:35px; text-indent:6px; color:#999; clear:both}
+.location a{ color:#999; padding-right:10px; background:url(../images/eatjt.jpg) no-repeat center right; margin-right:6px;}
+.location a:hover{ color:#444;}
+
+.content1{ width:962px; background:url(../images/conzd1.jpg) repeat-y; overflow:hidden;  margin:0 auto;}
+.conleft{ width:167px; float:left;}
+.conright{ width:795px; float:left;padding-bottom:20px; background:url(../images/cobjright.jpg) no-repeat right top;}
+.conbottom{ width:962px; float:left; height:8px; overflow:hidden;}
+
+/*--navleft---*/
+.conleftTitle{ width:167px; height:32px; line-height:32px; text-indent:20px; color:#fff; font-weight:bold; font-size:14px; background:url(../images/leftnav.jpg) no-repeat;}
+.conleftlist { float:left; padding-left:12px; display:inline-block; overflow:hidden; margin-top:6px;}
+.conleftlist li{ width:144px; height:22px; line-height:22px; text-indent:8px; margin-top:4px;}
+.conleftlist li a{width:144px; height:22px; display:block; color:#666;}
+.conleftlist li a:hover ,.conleftlist .colelia{ color:#333; background:url(../images/leftnav2.png) no-repeat; text-decoration:none;}
+
+/*--con txt---*/
+.conright h1{ font-size:20px; color:#333; height:70px; line-height:66px; text-align:center; background:url(../images/gra.jpg) no-repeat center bottom;}
+.epidemic1{ width:701px; margin:0 auto; margin-bottom:26px; overflow:hidden;}
+.epidemic1 h2{ font-size:16px; color:#000; line-height:38px; margin-bottom:8px;}
+.epidemic11{ width:344px; height:220px; border:3px solid #ddd; float:left; position:relative;}
+.epidemic11 .epTxt{height:30px;width:100%; line-height:30px; text-indent:5px; font-size:14px; overflow:hidden; background:url(../images/diantm.png); position:absolute; left:0; bottom:0;}
+.epidemic11 .epTxt a {color:#fff; }
+.epidemic11:hover{ border-color:#333}
+.epidemic_227{ border:3px solid #ddd; float:left; position:relative;}
+.epidemic_227 .epTxt{height:30px;width:100%;line-height:30px;color:#fff;text-indent:5px; font-size:14px; overflow:hidden; background:url(../images/diantm.png); position:absolute; left:0; bottom:0;}
+.epidemic_227 .epTxt a { color:#FFF;}
+.epidemic_227:hover{ border-color:#333}
+
+.epidemic2{ width:100%; border-top:1px solid #ddd; margin-bottom:26px; overflow:hidden; float:left; }
+.epidemic2 h2{font-size:16px; color:#000; height:38px; margin-bottom:8px; line-height:38px; width:701px;padding-top:18px; margin-left:auto; margin-right:auto;}
+.epidemic2 h2 a,.epidemic1 h2 a{ float:right; height:30px; line-height:30px; color:#999; font-size:12px; padding-right:22px; background:url(../images/ep_03.png) no-repeat right -17px; margin-top:5px;}
+.epidemic2 h2 a:hover{ color:#333; background-position:right 7px; text-decoration:none;}
+.epidemic21{width:701px; margin:0 auto; display:block;}
+.epidemic21 li{ width:110px; height:188px; background:#ddd; padding:3px; float:left; margin-right:1px; margin-bottom:1px;}
+.epidemic21 .Txt{ line-height:14px; height:50px;margin:10px 4px 0 4px; overflow:hidden;}
+.epidemic21 .Txt a { color:#666; }
+.epidemic21 .Date{ line-height:14px; color:#999; margin:0 4px;}
+.epidemic21 li.hover{ background:#333;}
+.epidemic21 li.hover .Txt a,.epidemic21 li.hover .Date{ color:#fff; text-decoration:none;}
+
+.epidemic3{}
+.epidemic31{ width:701px; margin:0 auto; overflow:hidden;}
+.epidemic31 li{ width:330px; float:left; height:120px; overflow:hidden; margin:0 20px 20px 0;}
+.epidemic31 li p.pic { float:left; margin-right:14px;}
+.epidemic31 li p.pic a { border:3px solid #DDDDDD; display:block}
+.epidemic31 li p.pic a:hover { border:3px solid #333;}
+.epidemic31 img{width:110px; display:block}
+.epidemic31 h3{ font-size:14px; height:14px; overflow:hidden; line-height:14px; margin-bottom:6px;}
+.epidemic31 h3 a{ color:#333;}
+.epidemic31 .Txt{ line-height:16px; height:56px; overflow:hidden; color:#666;}
+.epidemic31 .Date{ color:#999;}
+.epidemic31 .More { height:15px;}
+.epidemic31 .More a{ height:15px; float:left; line-height:15px; color:#999; font-size:12px; padding-right:22px; background:url(../images/ep_03.png) no-repeat right -24px;}
+.epidemic31 .More a:hover{ color:#333; background-position:right 0}
+
+.joined{ width:962px; float:left; background:url(../images/joi_03.jpg) repeat-y; padding-bottom:20px; min-height:395px;}
+.joined1{ width:378px; float:left; text-align:center; padding-top:103px;}
+.joined2{ width:512px; float:left; color:#666;}
+.joined2 h1{ font-size:24px; line-height:98px;}
+.joined2 p{ font-size:14px; line-height:20px; margin-bottom:15px;}
+.Input{ height:29px; line-height:29px; background:url(../images/joi_05.jpg) no-repeat; margin-top:10px;}
+.Input span{ width:66px; text-align:center; float:left;}
+.Input input{ width:251px; height:29px; line-height:29px; color:#666; border:none; background:none; float:left}
+.Input font{ font-size:12px; float:left; margin-left:8px;}
+.Drop-down{ height:29px;line-height:29px; margin-top:10px; background:url(../images/joi_05.jpg) no-repeat 0 -38px;}
+.Drop-down1{ width:127px; float:left;line-height:29px; text-indent:10px;}
+.Drop-down2{ width:190px; float:left; text-indent:10px; position:relative;}
+.down21{ width:189px; border:1px solid #ccc; border-top:none; background:#fff; overflow:hidden; position:absolute; top:27px; left:-1px; display:none;}
+.down21 a{ width:189px; line-height:24px; text-indent:10px; float:left; color:#666;}
+.down21 a:hover{ background:#f6f6f6; color:#333;}
+.down22 ,.down22 a{ width:194px;}
+.Drop-down2:hover .down21{ display:block;}
+.Select{ height:97px; margin-top:10px; background:url(../images/joi_05.jpg) no-repeat 0 -76px;}
+.Select2{ float:left; width:360px; padding:0 10px; padding-top:8px;}
+.Select2 td{ line-height:20px;}
+.Submit{ height:25px; line-height:25px; color:#666; margin-top:20px;}
+.Submit .Submit1 ,.Submit .Submit2{ width:69px; height:25px; float:right; margin-left:22px; display:inline; background:url(../images/joi_06.png) no-repeat; text-align:center; color:#FFF; line-height:23px;}
+.Submit .Submit2{ background-position:-91px 0;}
+.Submit .Submit1:hover{ background-position:0px -32px;}
+.Submit .Submit2:hover{ background-position:-91px -32px;}
+
+.userleft{ width:120px; margin:0 99px 0 116px; display:inline;}
+.userleftNav { float:left; overflow:hidden; margin-top:6px;}
+.userleftNav li{ width:120px; height:25px; border-bottom:1px solid #ddd; line-height:22px; text-indent:8px; margin-top:4px;}
+.userleftNav li a{width:120px; height:22px; display:block; color:#666;}
+.userleftNav li a:hover ,.userleftNav .userNava{ color:#333; background:url(../images/user_01.jpg) no-repeat;}
+.userTxt{ width:505px; float:left; color:#666; padding-top:104px;}
+.userTxt h2{ font-size:17px; line-height:22px;}
+.userTxt h3{ font-weight:bold; color:#333; margin-bottom:6px;}
+.userTxt p{ line-height:16px;}
+.userTxt .border{ height:1px; width:505px; margin:15px 0; background:#ddd; display:block;}
+.userTxt1{ width:505px; padding-bottom:30px; overflow:hidden}
+.userTxt1 div{ width:190px; float:left;font-weight:bold; color:#333;}
+.userTxt1 ul{ width:310px; float:left;}
+.userTxt1 ul li{ width:150px; float:left; margin-left:5px; display:inline; line-height:22px;}
+
+.shopping{ width:730px; margin:0 auto;}
+.shopping h1{ line-height:100px; font-size:20px; color:#000;}
+.shForm{ line-height:22px; color:#666;}
+.shForm a{ color:#666;}
+.shForm a:hover{ color:#999}
+.shForm td{ text-indent:8px; border-bottom:1px solid #ddd;}
+.shForm .title{ background:url(../images/shop.jpg) repeat-x;}
+.shForm img{ margin: 15px 0;}
+.shForm  .Total{ font-weight:bold;}
+.shopping2{ margin-bottom:20px;}
+.shopping2 .Submit1 ,.shopping2 .Submit2{ width:78px; background:url(../images/shop_2.png) no-repeat;}
+.shopping2 .Submit2{ background-position:-100px 0;}
+.shopping2 .Submit1:hover{ background-position:0px -30px;}
+.shopping2 .Submit2:hover{ background-position:-100px -30px;}
+
+.read1{ width:434px; float:left; margin-left:45px; display:inline;}
+.read1 h1{ font-size:20px; color:#000; height:auto; line-height:40px; margin:20px 0 0 0; padding:0; text-align:left; background:none;}
+.read1 h6{ line-height:16px; color:#999;}
+.read1 p{ line-height:20px; color:#666; margin-top:20px;}
+.read2{ width:234px; float:left; margin-top:100px; margin-left:35px; display:inline;}
+.read21{ float:left; width:234px;}
+.read21 li{ width:110px; height:110px; padding:3px; background:#ddd; overflow:hidden; float:left; margin:0 1px 1px 0;}
+.read21 li:hover{ background:#333;}
+.read22{ height:17px; width:234px; float:left; margin:10px 0 20px 0;}
+.read22 a ,.read22 .read22a{ width:17px; height:17px; float:right; margin-left:12px; display:inline; text-align:center; color:#fff; line-height:17px;background:url(../images/read1.jpg) no-repeat -29px 0;}
+.read22 a:hover ,.read22 .read22a{ background-position:0 0;}
+
+.lifestyle{ width:701px; margin:0 auto;}
+.lifestyle h1{font-size:24px; color:#000; margin:10px 0 0 0; padding:0; text-align:left; background:none;}
+.lefefen{ float:left; width:701px;}
+.lefefen span{ height:20px; line-height:20px; color:#333; float:left; margin-top:2px;}
+.lefefen a{ padding:0 8px; height:20px; line-height:20px; float:left; color:#333; margin:2px 5px 0 0;}
+.lefefen a:hover ,.lefefen .flhover{ background:#333; color:#fff;}
+.lifestyle1{ width:701px; height:32px; line-height:32px; background:#eee; margin:15px 0 10px 0; float:left;}
+.lifestyle1 .px{ padding:0 12px; float:left; border-right:1px solid #ddd; color:#999;}
+.lifestyle1 .rq ,.lifestyle1 .ll ,.lifestyle1 .cs{float:left;border-right:1px solid #ddd;}
+.lifestyle1 .rq a ,.lifestyle1 .ll a ,.lifestyle1 .cs a{ height:32px; display:block; padding-left:12px; color:#999;}
+.lifestyle1 .rq a:hover ,.lifestyle1 .ll a:hover ,.lifestyle1 .cs a:hover{ background:url(../images/ep_05.png) repeat-x; color:#000; text-decoration:none}
+.lifestyle1 .rq span ,.lifestyle1 .ll span ,.lifestyle1 .cs span{ background:url(../images/ep_04.png) no-repeat right -21px; display:block; padding-right:25px;}
+.lifestyle1 .ll span{ background-position:right 11px;}
+.lifestyle1 .cs span{ background-position:right -86px;}
+.lifestyle1 .rqa{background:url(../images/ep_05.png) repeat-x; color:#000;}
+
+.Paging{ float:right;}
+.Paging em a {width:17px; height:17px; line-height:17px; text-align:center; color:#fff; font-family:Arial, Helvetica, sans-serif; font-size:9px; background:url(../images/lefes.png) no-repeat -29px 0; float:left; margin:7px 10px 0 10px; display:inline-block; text-decoration:none;}
+.Paging em a:hover { color:#FFF;background-position: 0 0;}
+.Paging span{ float:left; line-height:32px;color:#ccc;}
+.Paging span a{ padding:0 5px; color:#999;}
+.Paging span a:hover ,.Paging .spana{color:#333;}
+.lifeli li{ margin-bottom:1px;}
+
+
+/*市场观察*/
+.yamitable { width:701px; margin:0 auto; text-indent:10px;}
+.yamitable div { float:left}
+.yamitable div.time { width:107px;}
+.yamitable div.locale { width:110px;}
+.yamitable div.name { width:215px;}
+.tablleTit { height:25px; background:#EEEEEE; line-height:25px;}
+.tablleList { line-height:42px; clear:both; border-bottom:1px solid #eee; height:42px;}
+.activity-time {border-bottom:1px solid #eee;}
+.activity-time li { padding-top:18px; padding-bottom:25px; border-top:1px solid #eee;}
+.activity-timePic { width:190px; float:left}
+.activity-timeContant { width:500px; float:left; color:#666;}
+.activity-timeContant strong { font-size:16px; color:#333;}
+.activity-timeContant p { padding-top:5px; padding-bottom:5px;}
+.BrandObservesearch { height:40px; line-height:40px; border-bottom:1px solid #ccc;}
+.BrandObservesearch a{ font-size:14px; color:#666; padding-left:8px;padding-right:8px; color:#ccc;}
+.BrandLogoListTitle { font-size:14px; margin:0 auto; line-height:35px; padding-top:6px;}
+.BrandWordListTitle { font-size:18px; margin:0 auto; line-height:35px; padding-top:6px; font-family:Arial}
+.BrandLogoList { width:703px;}
+.BrandLogoList li{ float:left; position:relative;}
+.BrandLogoList li a { background:#EFEFEF; padding:2px; display:block; margin:0 1px 1px 0;}
+.BrandLogoList li font { display:none;}
+.BrandLogoList li a:hover { background:#333;}
+.BrandLogoList li a:hover font { display:block;position:absolute; bottom:2px; height:25px; line-height:25px; text-align:center; background:#333;width:112px;color:#FFF;}
+.BrandLogoList,.BrandWordList { border-bottom:1px solid #ddd; padding-bottom:30px;}
+.BrandWordList li{ width:112px; float:left;}
+.BrandWordList li a { color:#666;}
+.BrandReportDetailedLogo { border:1px solid #EFEFEF; float:left; margin:46px 0 0 43px; display:inline;}
+.BrandReportDetailedWord { width:550px; margin:46px 0 0 0px; float:left;padding-left:20px;}
+.BrandReportDetailedWord strong { font-size:20px;}
+.BrandReportDetailedWord p { margin:5px 0 0 0;}
+.BrandReportDetailedTab {background:url(../images/BrandReportDetailed_c2.png) repeat-x bottom; height:28px;line-height:28px; width:100%; margin:30px auto 15px auto; padding-left:46px;}
+.BrandReportDetailedTab #map2 { border-right:1px solid #ddd;}
+.BrandReportDetailedTab a { display:block; width:117px; line-height:26px; float:left; text-align:center;border-top:1px solid #ddd;border-left:1px solid #ddd; color:#666;}
+.BrandReportDetailedTab a:hover{ border-bottom:1px solid #fff; color:#333; text-decoration:none;}
+.BrandReportDetailedTab a.hover{ border-bottom:1px solid #fff; color:#333; text-decoration:none;}
+.BrandReportDetailedWord a{ float:left; height:30px; line-height:30px; color:#999; font-size:12px; padding-right:22px; background:url(../images/ep_03.png) no-repeat right -17px;}
+.BrandReportDetailedWord a:hover{ color:#333; background-position:right 7px;}
+.EpidemicDetailedContant a img { border:3px solid #ccc; margin-bottom:10px;}
+.EpidemicDetailedContant a:hover img { border:3px solid #333;}
+.EpidemicDetailedLeft{ width:545px; float:left; margin-left:47px; display:inline;}
+.EpidemicDetailedLeft h1{ font-size:20px; color:#000; height:auto; line-height:40px; margin:20px 0 0 0; padding:0; text-align:left; background:none;}
+.EpidemicDetailedLeft h6{ line-height:16px; color:#999;}
+.EpidemicDetailedLeft p{ line-height:20px; color:#666; margin-top:20px;}
+.EpidemicDetailedRight{ width:156px; float:left; margin-top:100px;}
+.EpidemicDetailedRight span { border-top:1px solid #ccc; border-bottom:1px dotted #ccc; display:block; line-height:20px; padding-top:10px;padding-bottom:10px;}
+.EpidemicDetailedRight span a { width:68px; height:25px; display:block; background:url(../images/joi_06.png) no-repeat; text-align:center; line-height:22px; color:#FFF; margin-top:10px;}
+.EpidemicDetailedRight span a:hover { background-position:0 -32px; text-decoration:none;}
+.EpidemicDetailedMore{ height:15px; float:left; line-height:15px; color:#999; font-size:12px; padding-right:22px; background:url(../images/ep_03.png) no-repeat right -24px; margin-top:30px;}
+.EpidemicDetailedMore:hover{ color:#333; background-position:right 0; text-decoration:none;}
+.EpidemicDetailedKeyword { clear:both; padding-top:15px;}
+.EpidemicDetailedKeyword strong { color:#333; background:url(../images/EpidemicDetailedPic_r6_c8.png) 0 7px no-repeat; padding-left:10px; display:block}
+.EpidemicDetailedKeyword p { padding-left:10px; color:#999;}
+/*登录*/
+.LoginLeft{ width:320px; float:left; background:url(../images/login_r2_c1.png) no-repeat 103px 90px; height:415px;}
+.LoginRight{ width:370px; float:left; color:#666; background:url(../images/login_r1_c3.png) no-repeat left 10px; padding-left:50px;}
+.LoginRight h1{ font-size:24px; line-height:98px;}
+.LoginRight p{ font-size:14px; line-height:20px; margin-bottom:15px;}
+.LoginRight .cue { color:#666; font-size:12px;}
+.LoginRight .cue a { color:#666; text-decoration:underline;}
+.LoginBox { background:url(../images/login_r3_c5.png) no-repeat; width:317px; height:67px;}
+.LoginBox input { border:none; background:none; height:28px; clear:both; float:left; margin-bottom:10px; font-size:12px; margin-left:40px; display:inline;}
+
+.LoginSubmit{ width:317px; height:95px; line-height:25px; color:#666; margin-top:20px;}
+.LoginSubmit .Submit1{ width:69px; height:25px; float:right; margin-left:22px; display:inline; background:url(../images/joi_06.png) no-repeat; text-align:center; color:#FFF; line-height:23px;}
+.LoginSubmit .Submit1:hover{ background-position:0px -32px;}
+.rememberPassword { float:left;}
+.rememberPassword input { float:left; margin-top:6px;}
+.rememberPassword span { float:left; padding-left:6px;}
+.OrderSuccess { width:500px;}
+.OrderSuccess h1 { color:#000; padding-top:50px; line-height:70px;}
+.OrderSuccess p { font-size:12px; color:#666}
+.OrderSuccess p strong{ font-size:16px; display:block; line-height:40px;}
+.OrderSuccess .LoginSubmit a { float:left; height:30px; line-height:30px; color:#999; font-size:12px; padding-right:22px; background:url(../images/ep_03.png) no-repeat right -17px; margin-right:35px;}
+.OrderSuccess .LoginSubmit a:hover{ color:#333; background-position:right 7px;}
+.OrderSuccessLeft{ width:320px; float:left; background:url(../images/OrderSuccess.png) no-repeat 103px 90px; height:415px;}
+.ChangePassword { clear:both; height:35px;}
+.ChangePassword .fl { width:125px; float:left;}
+.ChangePassword .input{float:left;background:url(../images/inputBg.png) no-repeat; border:none; border-bottom:1px solid #bbb;border-right:1px solid #bbb; }
+.ChangePassword .input input { height:24px; width:190px; background:none; border:none; margin:0 5px;}
+.ChangePassword .Button { padding-top:10px;}
+.ChangePassword .Button a { width:69px; height:25px; float:left; display:inline; background:url(../images/joi_06.png) no-repeat; text-align:center; color:#FFF; line-height:23px;}
+.ChangePassword .Button a:hover{ background-position:0px -32px;}
+
+/*3张图片*/
+.threePic{width:701px; margin:0 auto; display:block; padding-top:20px;}
+.threePic li{background:#ddd; padding:13px; float:left; margin-right:1px; margin-bottom:1px;}
+.threePic .Txt{ line-height:14px; height:100px; line-height:60px;margin:0px 4px 0 4px; overflow:hidden; text-align:center; color:#666; font-size:14px;}
+.threePic .Txt a { color:#666; }
+.threePic li.hover{ background:#333;}
+.threePic li.hover .Txt a,.epidemic21 li.hover .Date{ color:#fff;}
+/*2张图片*/
+.twoPic{width:701px; margin:0 auto; display:block; padding-top:20px;}
+.twoPic li{background:#ddd; padding:12px; float:left; margin-right:1px; margin-bottom:1px;}
+.twoPic li img { width:314px; height:207px;}
+.twoPic .Txt{ line-height:14px; height:50px; line-height:60px;margin:0px 4px 0 4px; overflow:hidden; text-align:center; color:#666; font-size:14px;}
+.twoPic .Txt a { color:#666; }
+.twoPic li.hover{ background:#333;}
+.twoPic li.hover .Txt a,.epidemic21 li.hover .Date{ color:#fff;}
+/*--niu 高级搜索 个人资料修改 0406---*/
+.lifestyle .searchtitle1{ font-size:16px; line-height:60px; height:60px;}
+.searchtitle2{ line-height:34px; font-size:14px;}
+.search01{ line-height:16px; width:701px; border-bottom:1px dashed #ccc; overflow:hidden; color:#666; padding:8px 0;}
+.search01 dd{ width:65px; float:left; font-weight:bold; text-align:center;}
+.search01 dt{ width:636px; float:left;}
+.search01 dt a{ width:110px; float:left; margin:2px 0; line-height:16px; color:#666; height:16px; margin-left:12px; float:left; overflow:hidden;}
+.search01 dt a i{ width:15px; height:11px; float:left;  margin-top:2px;background:url(../images/search01.jpg) no-repeat left 1px;}
+.search01 .Radio a i{ background-position:left 0;}
+.search01 .Radio a .Radio1{ background-position:left -38px;}
+.search01 .Mulcho a i{ background-position:left -125px;}
+.search01 .Mulcho a .Mulcho1{ background-position:left -82px;}
+
+.UserCenter p{ line-height:23px; margin-top:7px;}
+.UserCenter .editInput{ line-height:23px; height:23px; width:200px; border:1px solid #bbb; margin-left:10px; text-indent:4px; color:#666; } 
+.UserCenter .idetSelect{ line-height:23px; height:23px; width:100px; margin:0; padding:0; margin-left:10px;}
+.ediprofileMulcho li span{width:15px; height:11px; float:left;  margin-top:5px; background:url(../images/search01.jpg) no-repeat left -125px;}
+.ediprofileMulcho li span.Mulcho1{width:15px; height:11px; float:left;  margin-top:5px; background:url(../images/search01.jpg) no-repeat left -82px;}

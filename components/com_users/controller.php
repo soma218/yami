@@ -9,7 +9,7 @@
 defined('_JEXEC') or die;
 
 /**
- * Base Controller Class For Users.
+ * Base controller class for Users.
  *
  * @package		Joomla.Site
  * @subpackage	com_users
@@ -51,8 +51,8 @@ class UsersController extends JControllerLegacy
 					// Check if user registration is enabled
             		if(JComponentHelper::getParams('com_users')->get('allowUserRegistration') == 0) {
             			// Registration is disabled - Redirect to login page.
-						$this->setRedirect(JRoute::_('index.php?option=com_users&view=login', false));
-						return;
+                  $this->setRedirect(JRoute::_('index.php?option=com_users&view=login', false));
+                  return;
             		}
 
 					// The user is a guest, load the registration model and show the registration page.

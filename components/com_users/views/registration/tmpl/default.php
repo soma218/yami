@@ -13,45 +13,72 @@ JHtml::_('behavior.keepalive');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 ?>
-<div class="registration<?php echo $this->pageclass_sfx?>">
-<?php if ($this->params->get('show_page_heading')) : ?>
-	<h1><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
-<?php endif; ?>
-
-	<form id="member-registration" action="<?php echo JRoute::_('index.php?option=com_users&task=registration.register'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
-<?php foreach ($this->form->getFieldsets() as $fieldset): // Iterate through the form fieldsets and display each one.?>
-	<?php $fields = $this->form->getFieldset($fieldset->name);?>
-	<?php if (count($fields)):?>
-		<fieldset>
-		<?php if (isset($fieldset->label)):// If the fieldset has a label set, display it as the legend.
-		?>
-			<legend><?php echo JText::_($fieldset->label);?></legend>
-		<?php endif;?>
-			<dl>
-		<?php foreach($fields as $field):// Iterate through the fields in the set and display them.?>
-			<?php if ($field->hidden):// If the field is hidden, just display the input.?>
-				<?php echo $field->input;?>
-			<?php else:?>
-				<dt>
-					<?php echo $field->label; ?>
-					<?php if (!$field->required && $field->type!='Spacer'): ?>
-						<span class="optional"><?php echo JText::_('COM_USERS_OPTIONAL'); ?></span>
-					<?php endif; ?>
-				</dt>
-				<dd><?php echo ($field->type!='Spacer') ? $field->input : "&#160;"; ?></dd>
-			<?php endif;?>
-		<?php endforeach;?>
-			</dl>
-		</fieldset>
-	<?php endif;?>
-<?php endforeach;?>
+<div class="location">当前位置：<a href="Home.html">首页</a>注册</div>
+<div class="content1">
+	<div class="conbottom"><img src="images/users/joi_02.jpg" width="962" height="8" /></div>
+    <div class="joined">
+    	<div class="joined1"><img src="images/users/joi_04.jpg" width="236" height="226" /></div>
+    	<div class="joined2">
+        <h1>注册</h1>
+        <p>感谢您拜访雅觅网站。请填写以下表格, 让雅觅更了解您的需求, 第一时间为您安排最适合您的服务。</p>
+		<form id="member-registration" action="<?php echo JRoute::_('index.php?option=com_users&task=registration.register'); ?>" method="post" class="form-validate" enctype="multipart/form-data">	
+        <div class="Input"><span>姓　　名</span><input name="jform[name]" type="text" value='' /><font>*</font></div>
+        <div class="Input"><span>电子邮箱</span>
+          <input name="jform[email]" type="text"  value=''/><font>*</font></div>
+        <div class="Input"><span>电　　话</span><input name="jform[phone]" type="text"  value='' /><font>*</font></div>
+        <div class="Input"><span>职　　称</span>
+          <input name="jform[department]" type="text"   value=''/>
+        </div>
+        <div class="Drop-down">
+        <div class="Drop-down1">所  在  地</div>
+        <div class="Drop-down2">选择省市<div class="down21"><a href="">上海</a><a href="">上海</a><a href="">上海</a></div></div>
+        <div class="Drop-down2">选择城市<div class="down21 down22"><a href="">上海</a><a href="">上海</a><a href="">上海</a></div></div>
+        </div>
+        <div class="Select">
+        <div class="Drop-down1">感兴趣的流行资讯</div>
+        <div class="Select2">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				  <tr>
+					<td width="8%"><input type="checkbox" name="checkbox" id="checkbox5" /></td>
+					<td width="42%">花型</td>
+					<td width="8%"><label>
+					  <input type="checkbox" name="checkbox" id="checkbox" />
+					</label></td>
+					<td width="42%">面料</td>
+				  </tr>
+				  <tr>
+					<td><input type="checkbox" name="checkbox6" id="checkbox6" /></td>
+					<td>设计</td>
+					<td><input type="checkbox" name="checkbox2" id="checkbox2" /></td>
+					<td>商品展示</td>
+				  </tr>
+				  <tr>
+					<td><input type="checkbox" name="checkbox7" id="checkbox7" /></td>
+					<td>服装</td>
+					<td><input type="checkbox" name="checkbox3" id="checkbox3" /></td>
+					<td>最新展会信息</td>
+				  </tr>
+				  <tr>
+					<td><input type="checkbox" name="checkbox8" id="checkbox8" /></td>
+					<td>流行趋势预测</td>
+					<td><input type="checkbox" name="checkbox4" id="checkbox4" /></td>
+					<td>其他</td>
+				  </tr>
+				</table>
+		</div>
+        </div>
 		<div>
-			<button type="submit" class="validate"><?php echo JText::_('JREGISTER');?></button>
-			<?php echo JText::_('COM_USERS_OR');?>
-			<a href="<?php echo JRoute::_('');?>" title="<?php echo JText::_('JCANCEL');?>"><?php echo JText::_('JCANCEL');?></a>
 			<input type="hidden" name="option" value="com_users" />
 			<input type="hidden" name="task" value="registration.register" />
 			<?php echo JHtml::_('form.token');?>
 		</div>
+        <div class="Submit"><a href="<?php echo JRoute::_('');?>" title="<?php echo JText::_('JCANCEL');?>" class="Submit2"><?php echo JText::_('JCANCEL');?></a><button type="submit" class="Submit1"><?php echo JText::_('JREGISTER');?></button>带“*”为必须填写内容</div>
+
+		<form>
+        </div><!-- end joined2 -->
+    </div><!-- end joined -->
+  <div class="conbottom"><img src="images/users/joi_01.jpg" width="962" height="8" /></div>
+</div>
+
 	</form>
 </div>
