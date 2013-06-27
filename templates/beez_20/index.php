@@ -79,7 +79,7 @@ $userId = $user->get('id');
 <div class="top">
   <div class="logo"><!--<img src="<?php echo $this->baseurl ?>/<?php echo htmlspecialchars($logo); ?>"  alt="<?php echo htmlspecialchars($templateparams->get('sitetitle'));?>" />!--><img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/logo.jpg" width="149" height="51" /></div>
   <div class="topRight">
-    <div class="topLogin"><a href="#">中文</a><a href="#">ENGLISH</a><a href="ShoppingCart.html">购物车</a>
+    <div class="topLogin"><a href="#">中文</a><a href="#">ENGLISH</a><a href="<?php echo JRoute::_("index.php?option=com_jshopping&controller=cart&task=view&Itemid=$userId"); ?>">购物车</a>
 		<?php if($userId > 0 ): ?>
 			<a href="<?php echo JRoute::_('index.php?option=com_users&view=login'); ?>"><?php echo $user->get('username'); ?></a><a href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'. JUtility::getToken() .'=1'); ?>" style="padding-right:0; background:none;">退出</a>
 		<?php else: ?>
@@ -108,12 +108,13 @@ $userId = $user->get('id');
   </div>
 </div>
 <div class="nav homeNav">
-  <div class="nav1">
-    <ul>
-      <li class="mainlevel"><a href="Epidemic.html" class="navtab1"></a>
+
+      <jdoc:include type="modules" name="tab_menu"/>
+     <!-- <li class="mainlevel"><a href="Epidemic.html" class="navtab1"></a>
         <div class="sub_nav nav2" style="left:0px; top:61px; display: none;">
           <div class="nav2_left"></div>
           <ul class="menu">
+               <jdoc:include type="modules" name="tab_menu" style="beezDivision" headerLevel="3" />
             <li><a href="Epidemic.html">流行报告</a></li>
             <li><a href="Read.html">零售</a></li>
             <li><a href="InteriorDesign.html">室内设计</a></li>
@@ -154,9 +155,8 @@ $userId = $user->get('id');
           </ul>
           <div class="nav2_right"></div>
         </div>
-      </li>
-    </ul>
-  </div><!-- nav1 -->
+      </li> -->
+<!-- nav1 -->
   <div class="search">
     <input name="" type="text" />
     <a href="#" class="SeaButton"></a> <span><a href="search.html">高级搜索</a></span> </div><!-- search -->

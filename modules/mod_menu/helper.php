@@ -45,7 +45,13 @@ class modMenuHelper
 			$start		= (int) $params->get('startLevel');
 			$end		= (int) $params->get('endLevel');
 			$showAll	= $params->get('showAllChildren');
-			$items 		= $menu->getItems('menutype', $params->get('menutype'));
+			$items 		= $menu->getItems('menutype', $params->get('menutype')); 
+			//this sql 
+			/*SELECT m.id, m.title, m.module, m.position, m.content, m.showtitle, m.params, mm.menuid FROM yami_modules AS m 
+				LEFT JOIN yami_modules_menu AS mm ON mm.moduleid = m.id 
+				LEFT JOIN yami_extensions AS e ON e.element = m.module AND e.client_id = m.client_id 
+				WHERE m.published = 1 AND e.enabled = 1 AND (m.publish_up = '0000-00-00 00:00:00' OR m.publish_up <= '2013-06-27 01:42:25') AND (m.publish_down = '0000-00-00 00:00:00' OR m.publish_down >= '2013-06-27 01:42:25') AND m.access IN (1,1) AND m.client_id = 0 AND (mm.menuid = 435 OR mm.menuid <= 0) ORDER BY m.position, m.ordering
+			*/
 
 			$lastitem	= 0;
 
