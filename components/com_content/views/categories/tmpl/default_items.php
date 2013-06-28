@@ -9,12 +9,23 @@
 
 // no direct access
 defined('_JEXEC') or die;
-$class = ' class="first"';
+
+
 if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
 ?>
-<ul>
-<?php foreach($this->items[$this->parent->id] as $id => $item) : ?>
-	<?php
+<div class="location">当前位置：<a href="Home.html">首页</a><a href="Epidemic.html">市场观察</a>流行报告</div>
+<div class="content1">
+	<div class="conleft">
+    <div class="conleftTitle">流行报告</div>
+     <ul class="conleftlist">
+<?php
+
+ foreach($this->items[$this->parent->id] as $id => $item):
+
+  echo '<li><a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)).'">'.$item->title.'</a></li>';
+  
+  
+/* 
 	if ($this->params->get('show_empty_categories_cat') || $item->numitems || count($item->getChildren())) :
 	if (!isset($this->items[$this->parent->id][$id + 1]))
 	{
@@ -50,7 +61,7 @@ if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
 		endif; ?>
 
 	</li>
-	<?php endif; ?>
-<?php endforeach; ?>
+	<?php endif; ?> */
+ endforeach; ?>
 </ul>
 <?php endif; ?>

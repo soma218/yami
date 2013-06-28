@@ -28,17 +28,17 @@ foreach ($list as $i => &$item) :
   if($item->level == 1):
   $num ++;
   ?>
-  <li class="mainlevel"><a href="<?php echo $item->link; ?>" class="navtab<?php echo $num; ?>"><?php echo $item->title; ?></a>
+    <li class="mainlevel"><a href="<?php echo $item->link; ?>" class="navtab<?php echo $num; ?>"><?php //echo $item->title; ?></a>
           <div class="sub_nav nav2" style="left:0px; top:61px; display: none;">
             <div class="nav2_left"></div>
             <ul class="menu">
   <?php
-		echo $items[$item->id];
+		if(!empty($items[$item->id])) echo $items[$item->id];
   ?>
-        </ul>
-        <div class="nav2_right"></div>
-      </div>
-    </li>
+            </ul>
+            <div class="nav2_right"></div>
+          </div>
+  </li>
 <?php
 	endif;
 endforeach;
