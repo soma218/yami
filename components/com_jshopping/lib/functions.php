@@ -415,7 +415,7 @@ function checkUserLogin(){
         $return = base64_encode($_SERVER['REQUEST_URI']);
         $session =JFactory::getSession();
         $session->set("return", $return);
-        $mainframe->redirect(SEFLink('index.php?option=com_jshopping&controller=user&task=login', 1, 1, $jshopConfig->use_ssl));
+        $mainframe->redirect(SEFLink('index.php?option=com_users&view=login', 1, 1, $jshopConfig->use_ssl));
         exit();
     }
 return 1;

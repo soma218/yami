@@ -9,8 +9,15 @@
 // no direct access
 defined('_JEXEC') or die;
 ?>
+<div class="location">当前位置：<a href="#">首页</a>高级搜索</div>
+<div class="content1">
+	<div class="conleft">
+    <div class="conleftTitle">高级搜索</div>    
+    </div>
+    <div class="conright">
+    <div class="lifestyle">
+    <h1 class="searchtitle1">高级搜索</h1> 
 
-<div class="search<?php echo $this->pageclass_sfx; ?>">
 <?php if ($this->params->get('show_page_heading')) : ?>
 <h1>
 	<?php if ($this->escape($this->params->get('page_heading'))) :?>
@@ -27,4 +34,7 @@ defined('_JEXEC') or die;
 else :
 	echo $this->loadTemplate('error');
 endif; ?>
+</div>
+</div>
+</div>
 </div>

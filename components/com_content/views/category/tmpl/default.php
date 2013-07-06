@@ -12,8 +12,9 @@ defined('_JEXEC') or die;
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
 ?>
-<div class="category-list<?php echo $this->pageclass_sfx;?>">
 
+<div class="conright">
+<div class="lifestyle">
 	<?php if ($this->params->get('show_page_heading')) : ?>
 	<h1>
 		<?php echo $this->escape($this->params->get('page_heading')); ?>
@@ -55,4 +56,5 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 		<?php echo $this->loadTemplate('children'); ?>
 	</div>
 	<?php endif; ?>
+</div>
 </div>

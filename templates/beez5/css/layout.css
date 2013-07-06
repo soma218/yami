@@ -815,10 +815,10 @@ dd.createdby
 .pagenav
 {padding:2px; clear:both;}
 
-#main .pagination li.pagination-start,
-#main .pagination li.pagination-next,
-#main .pagination li.pagination-end,
-#main .pagination li.pagination-prev
+#main .pagination a.pagination-start,
+#main .pagination a.pagination-next,
+#main .pagination a.pagination-end,
+#main .pagination a.pagination-prev
 {border:0}
 
 #main .pagination li.pagination-start ,

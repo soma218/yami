@@ -150,7 +150,8 @@
 .lifestyle1 .rqa{background:url(../images/ep_05.png) repeat-x; color:#000;}
 
 .Paging{ float:right;}
-.Paging em a {width:17px; height:17px; line-height:17px; text-align:center; color:#fff; font-family:Arial, Helvetica, sans-serif; font-size:9px; background:url(../images/lefes.png) no-repeat -29px 0; float:left; margin:7px 10px 0 10px; display:inline-block; text-decoration:none;}
+.Paging em a{width:17px; height:17px; line-height:17px; text-align:center; color:#fff; font-family:Arial, Helvetica, sans-serif; font-size:9px; background:url(../images/lefes.png) no-repeat -29px 0; float:left; margin:7px 10px 0 10px; display:inline-block; text-decoration:none;}
+.Paging em span{width:17px; height:17px; line-height:17px; text-align:center; color:#fff; font-family:Arial, Helvetica, sans-serif; font-size:9px; background:url(../images/lefes.png) no-repeat -29px 0; float:left; margin:7px 10px 0 10px; display:inline-block; text-decoration:none;}
 .Paging em a:hover { color:#FFF;background-position: 0 0;}
 .Paging span{ float:left; line-height:32px;color:#ccc;}
 .Paging span a{ padding:0 5px; color:#999;}

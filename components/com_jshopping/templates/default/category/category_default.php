@@ -1,5 +1,13 @@
 <?php defined('_JEXEC') or die(); ?>
-<div class="jshop">
+<div class="content1">
+	<div class="conbottom"><img width="962" height="8" src="images/joi_02.jpg"></div>
+    <div class="joined">    
+<div class="jshop" style="  width: 300px;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 20px auto;
+">
 <h1><?php print $this->category->name?></h1>
 <?php print $this->category->description?>
 
@@ -28,4 +36,5 @@
 <?php }?>
 </div>
 <?php include(dirname(__FILE__)."/products.php");?>
+</div></div>
 </div>

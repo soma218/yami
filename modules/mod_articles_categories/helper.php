@@ -17,17 +17,37 @@ abstract class modArticlesCategoriesHelper
 	public static function getList(&$params)
 	{
 		$categories = JCategories::getInstance('Content');
-		$category = $categories->get($params->get('parent', 'root'));
-
+		$catid = JRequest::getVar('catid');
+		$cid = JRequest::getVar('id');
+		$id = isset($catid)?$catid:$cid; // 如果有catid则为具体文章
+		$subCategory = $categories->get($id);
+		$category = $subCategory->getParent();
 		if ($category != null)
 		{
 			$items = $category->getChildren();
+
 			if($params->get('count', 0) > 0 && count($items) > $params->get('count', 0))
 			{
 				$items = array_slice($items, 0, $params->get('count', 0));
 			}
+	
 			return $items;
 		}
 	}
+	
+	public function getAncestor(){
+		$categories = JCategories::getInstance('Content');
+		$catid = JRequest::getVar('catid');
+		$cid = JRequest::getVar('id');
+		$id = isset($catid)?$catid:$cid; // 如果有catid则为具体文章
+		$subCategory = $categories->get($id);
+		$category = $subCategory->getParent();
+		$parCategory = $categories->get($category->id);
+		$items = new stdclass();
+		$items->ancestor = $parCategory->getParent();
+		$items->parent = $parCategory;
+		return $items;
+	}
+
 
 }

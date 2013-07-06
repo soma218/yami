@@ -7,9 +7,42 @@
  */
 
 // no direct access
-defined('_JEXEC') or die;
+defined('_JEXEC') or die; 
 ?>
-<ul class="categories-module<?php echo $moduleclass_sfx; ?>">
+
+<div class="location">当前位置：<a href="<?php echo JRoute::_('index.php') ?>">首页</a><a href="#"><?php echo $ancestor->ancestor->title ?></a><?php echo $ancestor->parent->title ?></div>
+<div class="content1">
+	<div class="conleft">
+    <div class="conleftTitle"><?php echo $ancestor->parent->title ?></div>
+     <ul class="conleftlist">
 <?php
-require JModuleHelper::getLayoutPath('mod_articles_categories', $params->get('layout', 'default').'_items');
-?></ul>
+foreach ($list as $item) :
+?>
+	<li <?php if ($_SERVER['PHP_SELF'] == JRoute::_(ContentHelperRoute::getCategoryRoute($item->id))) echo ' class="active"';?>> <?php $levelup=$item->level-$startLevel -1; ?>
+  <h<?php echo $params->get('item_heading')+ $levelup; ?>>
+		<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)); ?>">
+		<?php echo $item->title;?></a>
+   </h<?php echo $params->get('item_heading')+ $levelup; ?>>
+
+		<?php
+		if($params->get('show_description', 0))
+		{
+			echo JHtml::_('content.prepare', $item->description, $item->getParams(), 'mod_articles_categories.content');
+		}
+		if($params->get('show_children', 0) && (($params->get('maxlevel', 0) == 0) || ($params->get('maxlevel') >= ($item->level - $startLevel))) && count($item->getChildren()))
+		{
+			echo '<ul>';
+			$temp = $list;
+			$list = $item->getChildren();
+			require JModuleHelper::getLayoutPath('mod_articles_categories', $params->get('layout', 'default').'_items');
+			$list = $temp;
+			echo '</ul>';
+		}
+		?>
+ </li>
+<?php endforeach; ?>
+</div>
+
+
+
+

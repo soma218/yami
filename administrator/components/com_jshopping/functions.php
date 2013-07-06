@@ -151,8 +151,8 @@ function displayMainPanelIco(){
     $menu['users'] = array(_JSHOP_MENU_CLIENTS, 'index.php?option=com_jshopping&controller=users', 'jshop_users_b.png', 1);
     $menu['other'] = array(_JSHOP_MENU_OTHER, 'index.php?option=com_jshopping&controller=other', 'jshop_options_b.png', 1);
     $menu['config'] = array( _JSHOP_MENU_CONFIG, 'index.php?option=com_jshopping&controller=config', 'jshop_configuration_b.png', $adminaccess );
-    $menu['update'] = array(_JSHOP_PANEL_UPDATE, 'index.php?option=com_jshopping&controller=update', 'jshop_update_b.png', $installaccess );
-    $menu['info'] = array(_JSHOP_MENU_INFO, 'index.php?option=com_jshopping&controller=info', 'jshop_info_b.png', 1);    
+    // $menu['update'] = array(_JSHOP_PANEL_UPDATE, 'index.php?option=com_jshopping&controller=update', 'jshop_update_b.png', $installaccess );
+    // $menu['info'] = array(_JSHOP_MENU_INFO, 'index.php?option=com_jshopping&controller=info', 'jshop_info_b.png', 1);    
     
     $dispatcher->trigger( 'onBeforeAdminMainPanelIcoDisplay', array(&$menu) );
     
@@ -323,7 +323,7 @@ function checkAccessController($name){
 }
 
 function displaySubmenuOptions($active=""){
-    include(JPATH_COMPONENT_ADMINISTRATOR."/views/panel/tmpl/options_submenu.php");
+    // include(JPATH_COMPONENT_ADMINISTRATOR."/views/panel/tmpl/options_submenu.php");
 }
 
 function getIdVendorForCUser(){

@@ -424,7 +424,7 @@ class jshopCheckout{
             }
         }
 
-        if ($step>2){
+        /*if ($step>2){
             $jhop_max_step = $session->get("jhop_max_step");
             if (!$jhop_max_step){
                 $session->set('jhop_max_step', 2);
@@ -439,7 +439,7 @@ class jshopCheckout{
                 }
                 exit();
             }
-        }
+        }*/
     }
     
     function deleteSession(){

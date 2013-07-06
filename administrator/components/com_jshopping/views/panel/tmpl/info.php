@@ -1,5 +1,5 @@
 <?php defined('_JEXEC') or die(); ?>
-<table width="100%" style="background: #EBF0F3;border-radius:10px;">
+<!--table width="100%" style="background: #EBF0F3;border-radius:10px;">
 <tr>
  <td width = "50%" valign="top" style="padding:5px;">
     <p style="margin-top:0px;">Anschrift und andere Angaben zum Unternehmen:<br>
@@ -58,4 +58,4 @@
         <br>
     </div>
  </td>
-</table>
+</table>-->

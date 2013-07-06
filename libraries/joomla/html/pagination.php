@@ -553,16 +553,25 @@ class JPagination extends JObject
 	protected function _list_render($list)
 	{
 		// Reverse output rendering for right-to-left display.
-		$html = '<ul>';
-		$html .= '<li class="pagination-start">' . $list['start']['data'] . '</li>';
-		$html .= '<li class="pagination-prev">' . $list['previous']['data'] . '</li>';
+				// Reverse output rendering for right-to-left display.
+
+		$html = '<em>'.$list['start']['data'].'</em><span>';
 		foreach ($list['pages'] as $page)
 		{
-			$html .= '<li>' . $page['data'] . '</li>';
+						$html .= '<a herf="#">' . $page['data'] . '</a>';
 		}
-		$html .= '<li class="pagination-next">' . $list['next']['data'] . '</li>';
-		$html .= '<li class="pagination-end">' . $list['end']['data'] . '</li>';
-		$html .= '</ul>';
+		$html .= '</span><em>' . $list['end']['data'] . '</em>';
+ 		
+		// $html = '<ul>';
+		// $html .= '<li class="pagination-start">' . $list['start']['data'] . '</li>';
+		// $html .= '<li class="pagination-prev">' . $list['previous']['data'] . '</li>';
+		// foreach ($list['pages'] as $page)
+		// {
+			// $html .= '<li>' . $page['data'] . '</li>';
+		// }
+		// $html .= '<li class="pagination-next">' . $list['next']['data'] . '</li>';
+		// $html .= '<li class="pagination-end">' . $list['end']['data'] . '</li>';
+		// $html .= '</ul>';
 
 		return $html;
 	}
@@ -594,6 +603,7 @@ class JPagination extends JObject
 		}
 		else
 		{
+			$item->text = str_replace(array('首页','末页'),array('&lt;','&gt;'),$item->text);
 			return "<a title=\"" . $item->text . "\" href=\"" . $item->link . "\" class=\"pagenav\">" . $item->text . "</a>";
 		}
 	}
@@ -615,7 +625,7 @@ class JPagination extends JObject
 			return "<span>" . $item->text . "</span>";
 		}
 		else
-		{
+		{	$item->text = str_replace(array('首页','末页'),array('&lt;','&gt;'),$item->text);
 			return "<span class=\"pagenav\">" . $item->text . "</span>";
 		}
 	}

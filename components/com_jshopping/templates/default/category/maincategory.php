@@ -1,4 +1,14 @@
 <?php defined('_JEXEC') or die(); ?>
+
+<div class="content1">
+	<div class="conbottom"><img width="962" height="8" src="images/joi_02.jpg"></div>
+    <div class="joined">    
+<div class="jshop" style="  width: 300px;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 20px auto;
+">
 <?php if ($this->params->get('show_page_heading') && $this->params->get('page_heading')) {?>    
 <div class="shophead<?php print $this->params->get('pageclass_sfx');?>"><h1><?php print $this->params->get('page_heading')?></h1></div>
 <?php }?>
@@ -29,4 +39,5 @@
 </table>
 <?php } ?>
 </div>
+</div></div>
 </div>

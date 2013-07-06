@@ -41,21 +41,21 @@
         <?php print sprintFreeExtraFiledsInCart($prod['extra_fields']);?>
         <?php print $prod['_ext_attribute_html']?>
     </td>
-    <td>
-        <?php print formatprice($prod['price']*$prod['quantity']); ?>
+    <td>000001
+        <!--<?php print formatprice($prod['price']*$prod['quantity']); ?>
         <?php print $prod['_ext_price_total_html']?>
         <?php if ($this->config->show_tax_product_in_cart && $prod['tax']>0){?>
             <span class="taxinfo"><?php print productTaxInfo($prod['tax']);?></span>
-        <?php }?>
+        <?php }?>-->
     </td>
-    <td>
-      <input type = "text" name = "quantity[<?php print $key_id ?>]" value = "<?php print $prod['quantity'] ?>" class = "inputbox" style = "width: 25px" />
+    <td><?php print $prod['quantity'] ?><input type = "hidden" name = "quantity[<?php print $key_id ?>]" value = "<?php print $prod['quantity'] ?>" class = "inputbox" style = "width: 25px" />
+      <!--<input type = "text" name = "quantity[<?php print $key_id ?>]" value = "<?php print $prod['quantity'] ?>" class = "inputbox" style = "width: 25px" />
       <?php print $prod['_qty_unit'];?>
-      <span class = "cart_reload"><img style="cursor:pointer" src="<?php print $this->image_path ?>/images/reload.png" title="<?php print _JSHOP_UPDATE_CART ?>" alt = "<?php print _JSHOP_UPDATE_CART ?>" onclick="document.updateCart.submit();" /></span>
+      <span class = "cart_reload"><img style="cursor:pointer" src="<?php print $this->image_path ?>/images/reload.png" title="<?php print _JSHOP_UPDATE_CART ?>" alt = "<?php print _JSHOP_UPDATE_CART ?>" onclick="document.updateCart.submit();" /></span> -->
     </td>
 
     <td>
-      <a href="<?php print $prod['href_delete']?>" onclick="return confirm('<?php print _JSHOP_CONFIRM_REMOVE?>')"><img src = "<?php print $this->image_path ?>images/remove.png" alt = "<?php print _JSHOP_DELETE?>" title = "<?php print _JSHOP_DELETE?>" /></a>
+      <a href="<?php print $prod['href_delete']?>" onclick="return confirm('<?php print _JSHOP_CONFIRM_REMOVE?>')"><!--<img src = "<?php print $this->image_path ?>images/remove.png" alt = "<?php print _JSHOP_DELETE?>" title = "<?php print _JSHOP_DELETE?>" />-->×移除</a>
     </td>
   </tr>
   <?php 
@@ -72,8 +72,8 @@
     <?php if ($countprod>0){?>
         <a href="<?php print $this->href_checkout ?>" class="Submit2"><?php print _JSHOP_CHECKOUT ?></a>
     <?php }?>
-    <a href="<?php print $this->href_checkout ?>" class="Submit1"><?php print _JSHOP_BACK_TO_SHOP ?></a>
+    <a href="<?php print $this->href_shop ?>" class="Submit1"><?php print _JSHOP_BACK_TO_SHOP ?></a>
 </div>
 </div>
-
+</div>
 </div>

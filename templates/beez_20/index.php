@@ -76,12 +76,13 @@ $userId = $user->get('id');
 </head>
 
 <body>
+
 <div class="top">
   <div class="logo"><!--<img src="<?php echo $this->baseurl ?>/<?php echo htmlspecialchars($logo); ?>"  alt="<?php echo htmlspecialchars($templateparams->get('sitetitle'));?>" />!--><img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/logo.jpg" width="149" height="51" /></div>
   <div class="topRight">
     <div class="topLogin"><a href="#">中文</a><a href="#">ENGLISH</a><a href="<?php echo JRoute::_("index.php?option=com_jshopping&controller=cart&task=view&Itemid=$userId"); ?>">购物车</a>
 		<?php if($userId > 0 ): ?>
-			<a href="<?php echo JRoute::_('index.php?option=com_users&view=login'); ?>"><?php echo $user->get('username'); ?></a><a href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'. JUtility::getToken() .'=1'); ?>" style="padding-right:0; background:none;">退出</a>
+			<a href="<?php echo JRoute::_('index.php?option=com_content'); ?>"><?php echo $user->get('username'); ?></a><a href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'. JUtility::getToken() .'=1'); ?>" style="padding-right:0; background:none;">退出</a>
 		<?php else: ?>
 			<a href="<?php echo JRoute::_('index.php?option=com_users&view=login'); ?>">登录</a><a href="<?php echo JRoute::_('index.php?option=com_users&view=registration'); ?>" style="padding-right:0; background:none;">注册</a>
 		<?php endif; ?>
@@ -108,62 +109,23 @@ $userId = $user->get('id');
   </div>
 </div>
 <div class="nav homeNav">
-
       <jdoc:include type="modules" name="tab_menu"/>
-     <!-- <li class="mainlevel"><a href="Epidemic.html" class="navtab1"></a>
-        <div class="sub_nav nav2" style="left:0px; top:61px; display: none;">
-          <div class="nav2_left"></div>
-          <ul class="menu">
-               <jdoc:include type="modules" name="tab_menu" style="beezDivision" headerLevel="3" />
-            <li><a href="Epidemic.html">流行报告</a></li>
-            <li><a href="Read.html">零售</a></li>
-            <li><a href="InteriorDesign.html">室内设计</a></li>
-            <li><a href="NewsBusiness.html">新闻商务</a></li>
-            <li><a href="BrandObserve.html">品牌观察</a></li>
-            <li><a href="activity.html">展会活动</a></li>
-            <li><a href="tide.html">潮流都市</a></li>
-          </ul>
-          <div class="nav2_right"></div>
-        </div>
-      </li>
-      <li class="mainlevel"><a href="design.html" class="navtab2"></a>
-        <div class="sub_nav nav2" style="left:0px; top:61px; display: none;">
-          <div class="nav2_left"></div>
-          <ul class="menu">
-            <li><a href="Epidemic.html">流行报告</a></li>
-            <li><a href="Read.html">零售</a></li>
-            <li><a href="InteriorDesign.html">室内设计</a></li>
-            <li><a href="NewsBusiness.html">新闻商务</a></li>
-            <li><a href="BrandObserve.html">品牌观察</a></li>
-            <li><a href="activity.html">展会活动</a></li>
-            <li><a href="tide.html">潮流都市</a></li>
-          </ul>
-          <div class="nav2_right"></div>
-        </div>
-      </li>
-      <li class="mainlevel"><a href="" class="navtab3"></a>
-        <div class="sub_nav nav2" style="left:0px; top:61px; display: none;">
-          <div class="nav2_left"></div>
-          <ul class="menu">
-            <li><a href="Epidemic.html">流行报告</a></li>
-            <li><a href="Read.html">零售</a></li>
-            <li><a href="InteriorDesign.html">室内设计</a></li>
-            <li><a href="NewsBusiness.html">新闻商务</a></li>
-            <li><a href="BrandObserve.html">品牌观察</a></li>
-            <li><a href="activity.html">展会活动</a></li>
-            <li><a href="tide.html">潮流都市</a></li>
-          </ul>
-          <div class="nav2_right"></div>
-        </div>
-      </li> -->
-<!-- nav1 -->
+
   <div class="search">
     <input name="" type="text" />
-    <a href="#" class="SeaButton"></a> <span><a href="search.html">高级搜索</a></span> </div><!-- search -->
+    <a href="#" class="SeaButton"></a> <span><a href="<?php echo JRoute::_('index.php?option=com_search') ?>">高级搜索</a></span> </div><!-- search -->
   <div class="hoanbor"><img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/home_borber.jpg" width="960" height="8" /></div><!-- hoanbor -->
 </div><!-- nav homeNav -->
 	<jdoc:include type="message" />
+	<?php if(JRequest::getVar('view') != 'categories'):  
+				$module = JModuleHelper::getModule('articles_categories');
+				echo JModuleHelper::renderModule($module);
+	endif; ?>
+
 	<jdoc:include type="component" />
+
+<div class="conbottom"><img width="962" height="8" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images//conzd2.jpg"></div>
+
 <div class="foot">
   <p><a href="#">关于我们</a>｜<a href="Contact1.html">联络我们</a>｜<a href="#">法律信息</a>｜<a href="#">常见问题</a>｜<a href="#">隐私条例</a></p>
   <p>©2013蕥觅 版权所有</p>

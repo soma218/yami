@@ -31,6 +31,8 @@ class ContentModelCategories extends JModelList
 	 */
 	protected $_extension = 'com_content';
 
+	private $_ancestor = null;
+	
 	private $_parent = null;
 
 	private $_items = null;
@@ -102,7 +104,7 @@ class ContentModelCategories extends JModelList
 
 			$options = array();
 			$options['countItems'] = $params->get('show_cat_num_articles_cat', 1) || !$params->get('show_empty_categories_cat', 0);
-			$categories = JCategories::getInstance('Content', $options);
+			$categories = JCategories::getInstance('Content', $options); 
 			$this->_parent = $categories->get($this->getState('filter.parentId', 'root'));
 
 			if (is_object($this->_parent)) {
@@ -124,4 +126,44 @@ class ContentModelCategories extends JModelList
 
 		return $this->_parent;
 	}
+	
+	public function getAncestor(){
+		$categories = JCategories::getInstance('Content');
+		$id = JRequest::getVar('id');
+		$category = $categories->get($id);
+		$items = new stdclass();
+		$items->ancestor = $category->getParent();
+		$items->parent = $category;
+		return $items;
+	}
+	
+	public function getTabContent($id){
+		$db = JFactory::getDbo();
+		$query = "select title,id from yami_categories where parent_id=".$db->escape($id)." and level=3 ";
+		$db->setQuery($query);
+		$rows = $db->loadObjectList();
+		$content = '';
+		foreach($rows as $row){
+			$query = "select * from yami_content where catid=".$db->escape($row->id)." order by images DESC";
+			$db->setQuery($query);
+			$content .= ' <div class="epidemic2">
+
+								<h2><a href="'.JRoute::_('index.php?option=com_content&view=category&id='.$row->id).'">更多</a>'.$row->title.'</h2>
+								<ul class="epidemic21">';
+			$results = $db->loadObjectList();
+			if($results){
+				foreach ($results as $result) {
+					$content .=  '<li>
+								<p><a href="#"><img src="'.$result->images.'" width="110" height="110" /></a></p>
+								<p class="Txt"><a href="'.JRoute::_('index.php?option=com_content&view=article&catid=88&id='.$result->id).'">'.$result->title.'</a></p><p class="Date">'.$result->created.'</p>
+							</li>';
+				}
+			}
+			$content .= '</ul></div>';
+
+		}
+		return $content;
+	}
+
+
 }

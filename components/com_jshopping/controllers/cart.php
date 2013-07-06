@@ -128,9 +128,9 @@ class JshoppingControllerCart extends JController{
 		$view->assign('no_image', $jshopConfig->noimage);
 		$view->assign('href_shop', $shopurl);
 		if ($jshopConfig->shop_user_guest==1){
-            $view->assign('href_checkout', SEFLink('index.php?option=com_jshopping&controller=checkout&task=step2&check_login=1',1, 0, $jshopConfig->use_ssl));
+            $view->assign('href_checkout', SEFLink('index.php?option=com_jshopping&controller=checkout&task=step5save&check_login=1',1, 0, $jshopConfig->use_ssl));
         }else{
-            $view->assign('href_checkout', SEFLink('index.php?option=com_jshopping&controller=checkout&task=step2',1, 0, $jshopConfig->use_ssl));
+            $view->assign('href_checkout', SEFLink('index.php?option=com_jshopping&controller=checkout&task=step5save',1, 0, $jshopConfig->use_ssl));
         }
         
         $tax_list = $cart->getTaxExt(0, 1);

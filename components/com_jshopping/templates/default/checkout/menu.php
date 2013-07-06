@@ -1,5 +1,5 @@
 <?php defined('_JEXEC') or die(); ?>
-<table class = "jshop" id = "jshop_menu_order">
+<!--<table class = "jshop" id = "jshop_menu_order">
   <tr>
     <?php foreach($this->steps as $step){?>
       <td class = "jshop_order_step">
@@ -7,4 +7,4 @@
       </td>
     <?php }?>
   </tr>
-</table>
+</table>-->

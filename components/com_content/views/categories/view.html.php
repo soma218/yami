@@ -27,9 +27,13 @@ class ContentViewCategories extends JViewLegacy
 	function display($tpl = null)
 	{
 		// Initialise variables
+		$model		= $this->getModel(); 
 		$state		= $this->get('State');
 		$items		= $this->get('Items');
 		$parent		= $this->get('Parent');
+		$ancestor		= $this->get('Ancestor'); 
+		$catId = JRequest::getVar('id');
+		$tabcontent		= $model->getTabContent($catId); 
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
@@ -48,6 +52,11 @@ class ContentViewCategories extends JViewLegacy
 			JError::raiseError(404, JText::_('COM_CONTENT_ERROR_PARENT_CATEGORY_NOT_FOUND'));
 			return false;
 		}
+		if ($ancestor == false)
+		{
+			JError::raiseError(404, JText::_('COM_CONTENT_ERROR_PARENT_CATEGORY_NOT_FOUND'));
+			return false;
+		}
 
 		$params = &$state->params;
 
@@ -59,6 +68,8 @@ class ContentViewCategories extends JViewLegacy
 		$this->maxLevelcat = $params->get('maxLevelcat', -1);
 		$this->assignRef('params',		$params);
 		$this->assignRef('parent',		$parent);
+		$this->assignRef('ancestor',		$ancestor);
+		$this->assignRef('tabcontent',		$tabcontent);
 		$this->assignRef('items',		$items);
 
 		$this->_prepareDocument();

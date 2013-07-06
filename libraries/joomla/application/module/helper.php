@@ -49,8 +49,8 @@ abstract class JModuleHelper
 					break; // Found it
 				}
 			}
-		}
 
+		}
 		// If we didn't find it, and the name is mod_something, create a dummy object
 		if (is_null($result) && substr($name, 0, 4) == 'mod_')
 		{
@@ -79,7 +79,7 @@ abstract class JModuleHelper
 	 * @since   11.1
 	 */
 	public static function &getModules($position)
-	{
+	{//var_dump($position);
 		$position = strtolower($position);
 		$result = array();
 
@@ -316,7 +316,7 @@ abstract class JModuleHelper
 
 			$query->join('LEFT', '#__extensions AS e ON e.element = m.module AND e.client_id = m.client_id');
 			$query->where('e.enabled = 1');
-
+//SELECT c.*, CASE WHEN CHAR_LENGTH(c.alias) THEN	CONCAT_WS(':', c.id, c.alias) ELSE	c.id END AS slug FROM yami_categories as c LEFT JOIN yami_categories AS s ON (s.lft <= c.lft AND s.rgt >= c.rgt) OR (s.lft > c.lft AND s.rgt < c.rgt) LEFT JOIN (SELECT cat.id as id FROM yami_categories AS cat JOIN yami_categories AS parent ON cat.lft BETWEEN parent.lft AND parent.rgt WHERE parent.extension = 'com_content' AND parent.published != 1 GROUP BY cat.id) AS badcats ON badcats.id = c.id WHERE (c.extension='com_content' OR c.extension='system') AND c.access IN (1,1) AND c.published = 1 AND s.id=90 AND badcats.id is null GROUP BY c.id, c.asset_id, c.access, c.alias, c.checked_out, c.checked_out_time, c.created_time, c.created_user_id, c.description, c.extension, c.hits, c.language, c.level, c.lft, c.metadata, c.metadesc, c.metakey, c.modified_time, c.note, c.params, c.parent_id, c.path, c.published, c.rgt, c.title, c.modified_user_id ORDER BY c.lft
 			$date = JFactory::getDate();
 			$now = $date->toSql();
 			$nullDate = $db->getNullDate();
@@ -339,7 +339,37 @@ abstract class JModuleHelper
 			$db->setQuery($query);
 			$modules = $db->loadObjectList();
 			$clean = array();
-
+/*SELECT
+	m.id,
+	m.title,
+	m.module,
+	m.position,
+	m.content,
+	m.showtitle,
+	m.params,
+	mm.menuid
+FROM
+	yami_modules AS m
+LEFT JOIN yami_modules_menu AS mm ON mm.moduleid = m.id
+LEFT JOIN yami_extensions AS e ON e.element = m.module
+AND e.client_id = m.client_id
+WHERE
+	m.published = 1
+AND e.enabled = 1
+AND (
+	m.publish_up = '0000-00-00 00:00:00'
+	OR m.publish_up <= '2013-07-04 23:48:46'
+)
+AND (
+	m.publish_down = '0000-00-00 00:00:00'
+	OR m.publish_down >= '2013-07-04 23:48:46'
+)
+AND m.access IN (1, 1)
+AND m.client_id = 0
+AND (mm.menuid = 0 OR mm.menuid <= 0)
+ORDER BY
+	m.position,
+	m.ordering */
 			if ($db->getErrorNum())
 			{
 				JError::raiseWarning(500, JText::sprintf('JLIB_APPLICATION_ERROR_MODULE_LOAD', $db->getErrorMsg()));

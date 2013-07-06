@@ -13,55 +13,16 @@ defined('_JEXEC') or die;
 
 if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
 ?>
-<div class="location">当前位置：<a href="Home.html">首页</a><a href="Epidemic.html">市场观察</a>流行报告</div>
-<div class="content1">
+
 	<div class="conleft">
-    <div class="conleftTitle">流行报告</div>
-     <ul class="conleftlist">
-<?php
+		<div class="conleftTitle"><?php echo $this->parent->title ?></div>
+		 <ul class="conleftlist">
+			<?php
 
- foreach($this->items[$this->parent->id] as $id => $item):
+			 foreach($this->items[$this->parent->id] as $id => $item):
+			  echo '<li><a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)).'" id="'.$item->id.'">'.$item->title.'</a></li>';
+			 endforeach; ?>
+			</ul>
+			<?php endif; ?>
+	</div>
 
-  echo '<li><a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)).'">'.$item->title.'</a></li>';
-  
-  
-/* 
-	if ($this->params->get('show_empty_categories_cat') || $item->numitems || count($item->getChildren())) :
-	if (!isset($this->items[$this->parent->id][$id + 1]))
-	{
-		$class = ' class="last"';
-	}
-	?>
-	<li<?php echo $class; ?>>
-	<?php $class = ''; ?>
-		<span class="item-title"><a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id));?>">
-			<?php echo $this->escape($item->title); ?></a>
-		</span>
-		<?php if ($this->params->get('show_subcat_desc_cat') == 1) :?>
-		<?php if ($item->description) : ?>
-			<div class="category-desc">
-				<?php echo JHtml::_('content.prepare', $item->description, '', 'com_content.categories'); ?>
-			</div>
-		<?php endif; ?>
-        <?php endif; ?>
-		<?php if ($this->params->get('show_cat_num_articles_cat') == 1) :?>
-			<dl><dt>
-				<?php echo JText::_('COM_CONTENT_NUM_ITEMS'); ?></dt>
-				<dd><?php echo $item->numitems; ?></dd>
-			</dl>
-		<?php endif; ?>
-
-		<?php if (count($item->getChildren()) > 0) :
-			$this->items[$item->id] = $item->getChildren();
-			$this->parent = $item;
-			$this->maxLevelcat--;
-			echo $this->loadTemplate('items');
-			$this->parent = $item->getParent();
-			$this->maxLevelcat++;
-		endif; ?>
-
-	</li>
-	<?php endif; ?> */
- endforeach; ?>
-</ul>
-<?php endif; ?>
