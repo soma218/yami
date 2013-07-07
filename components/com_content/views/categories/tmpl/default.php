@@ -45,6 +45,18 @@ case 79:
 case 85:
 		require_once('chaoliudushi.php');
 		break;
+case 86:
+		require_once('zhanhuihuodong.php');
+		break;
+case 87:
+		require_once('pinpaiguancha.php');
+		break;
+case 84:
+		require_once('xinwenshangwu.php');
+		break;
+case 83:
+		require_once('shineibaogao.php');
+		break;
 default:
 null;
 }

@@ -27,14 +27,28 @@ class ContentViewCategories extends JViewLegacy
 	function display($tpl = null)
 	{
 		// Initialise variables
+		$catId = JRequest::getVar('id');
 		$model		= $this->getModel(); 
 		$state		= $this->get('State');
 		$items		= $this->get('Items');
 		$parent		= $this->get('Parent');
 		$ancestor		= $this->get('Ancestor'); 
-		$catId = JRequest::getVar('id');
-		$tabcontent		= $model->getTabContent($catId); 
-
+		if($parent->title !='品牌观察'){
+			$tabcontent		= $model->getTabContent($catId); 
+			foreach($items as $item){
+				switch($item->title){
+					case '城市介绍':
+							$cityIntroduced 		= $model->getCityIntroduced($item->id); 
+							break ;
+					case '展会活动日程':
+							$exhibitionActivity 		= $model->getExhibitionActivity($item->id); 
+							break ;
+				}
+			}
+		}else{
+				$popularBrand = $model->getPopularBrand(110);
+				$this->assignRef('popularBrand',		$popularBrand);
+		}
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
 			JError::raiseWarning(500, implode("\n", $errors));
@@ -70,6 +84,7 @@ class ContentViewCategories extends JViewLegacy
 		$this->assignRef('parent',		$parent);
 		$this->assignRef('ancestor',		$ancestor);
 		$this->assignRef('tabcontent',		$tabcontent);
+		$this->assignRef('cityIntroduced',		$cityIntroduced);
 		$this->assignRef('items',		$items);
 
 		$this->_prepareDocument();
