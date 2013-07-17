@@ -162,7 +162,7 @@
 /*市场观察*/
 .yamitable { width:701px; margin:0 auto; text-indent:10px;}
 .yamitable div { float:left}
-.yamitable div.time { width:107px;}
+.yamitable div.time { width:207px;}
 .yamitable div.locale { width:110px;}
 .yamitable div.name { width:215px;}
 .tablleTit { height:25px; background:#EEEEEE; line-height:25px;}

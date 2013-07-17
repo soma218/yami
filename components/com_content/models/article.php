@@ -166,7 +166,17 @@ class ContentModelArticle extends JModelItem
 				if (empty($data)) {
 					return JError::raiseError(404, JText::_('COM_CONTENT_ERROR_ARTICLE_NOT_FOUND'));
 				}
-
+				/* start by jason  --- add content type*/  
+				$query = "select note,level from yami_categories where id=".$db->escape($data->catid);
+				$db->setQuery($query);
+				
+				if($db->loadObject()->level > 3){
+					$query = "select note from yami_categories where id=".$db->escape($data->parent_id);
+					$db->setQuery($query);
+				}
+				$data->note =$db->loadObject()->note; 
+				/* end by jason */  
+				
 				// Check for published state if filter set.
 				if (((is_numeric($published)) || (is_numeric($archived))) && (($data->state != $published) && ($data->state != $archived))) {
 					return JError::raiseError(404, JText::_('COM_CONTENT_ERROR_ARTICLE_NOT_FOUND'));
@@ -320,4 +330,57 @@ class ContentModelArticle extends JModelItem
         JError::raiseWarning( 'SOME_ERROR_CODE', JText::sprintf('COM_CONTENT_INVALID_RATING', $rate), "JModelArticle::storeVote($rate)");
         return false;
     }
+	/*
+	 * @purpose 获取文章显示类型
+	 */
+	public function getItemType($articleid){
+			$db = $this->getDbo();
+			 $db->getQuery(true);
+			$query = "select fv.value as value, fg.extras as extras from #__fieldsattach_values as fv left join #__fieldsattach as fg on fg.id=fv.fieldsid where fv.articleid=$articleid and fg.title='类型'";
+			$db->setQuery($query);
+			$result = $db->loadObject();
+			$extras = explode('
+',$result->extras);
+			$type = array_shift(explode('|',$extras[($result->value-1)]));
+			return $type;
+	}
+	
+	/*
+	* @purpose 获取城市模块内容
+	*/
+	public function getCityContent($articleid){
+			$catid = JRequest::getVar('catid');
+			$db = $this->getDbo();
+			 $db->getQuery(true);
+			 $query ="select catid from #__fieldsattach_groups where title= '城市模块'";
+			$db->setQuery($query);
+			$catidList = $db->loadrow();
+			if(strpos($catidList[0],$catid) !== false){
+				$query = "SELECT fv.value AS value,f.title AS title from #__fieldsattach_values AS fv LEFT JOIN yami_fieldsattach AS f ON f.id = fv.fieldsid left join #__fieldsattach_groups as fg on fg.id=f.groupid WHERE fv.articleid = $articleid AND fg.title = '城市模块'";
+				$db->setQuery($query);
+				$results = $db->loadObjectList();
+				if($results){
+					foreach($results as $result){
+					    switch($result->title){
+							case '城市图片': 
+										$title='image';
+										break;
+							case '城市地图':
+										$title='map';
+										break;
+							case '城市生活指南':
+										$title='lifestyle';
+										break;
+							case '实用旅游信息':
+										$title='info';
+										break;
+						}
+						$list[$title] = $result->value;
+					}
+				}
+				return (object)$list;
+			}
+			return false;
+	}
+
 }

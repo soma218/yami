@@ -33,21 +33,32 @@ class ContentViewCategories extends JViewLegacy
 		$items		= $this->get('Items');
 		$parent		= $this->get('Parent');
 		$ancestor		= $this->get('Ancestor'); 
+		// var_dump($items);
+		// $new_content  = $model->getTabContent1($catId); 
+		// var_dump($new_content);
+		// var_dump($parent);
+		$tabcontent		= $model->getTabResults($catId); 
 		if($parent->title !='品牌观察'){
-			$tabcontent		= $model->getTabContent($catId); 
 			foreach($items as $item){
 				switch($item->title){
 					case '城市介绍':
 							$cityIntroduced 		= $model->getCityIntroduced($item->id); 
+							$this->assignRef('cityIntroduced',	$cityIntroduced);
 							break ;
 					case '展会活动日程':
-							$exhibitionActivity 		= $model->getExhibitionActivity($item->id); 
+							$exhibitionActivity 		= $model->getExhibitionActivity($item->id);
+							$exhibitionActivity_id 		= $item->id;
+								
+							$this->assignRef('exhibitionActivity',	$exhibitionActivity);
+							$this->assignRef('exhibitionActivity_id',	$exhibitionActivity_id);
 							break ;
 				}
 			}
 		}else{
+				$brand = $model->getBrand(110);
 				$popularBrand = $model->getPopularBrand(110);
 				$this->assignRef('popularBrand',		$popularBrand);
+				$this->assignRef('brand',		$brand);
 		}
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
@@ -84,7 +95,6 @@ class ContentViewCategories extends JViewLegacy
 		$this->assignRef('parent',		$parent);
 		$this->assignRef('ancestor',		$ancestor);
 		$this->assignRef('tabcontent',		$tabcontent);
-		$this->assignRef('cityIntroduced',		$cityIntroduced);
 		$this->assignRef('items',		$items);
 
 		$this->_prepareDocument();

@@ -414,4 +414,142 @@ class ContentModelCategory extends JModelList
 
 		return $this->_children;
 	}
+	/* @purpose 获取分类列表的前4天内容
+	 * @param $id int 父级子菜单
+	 */
+	public function getTabContent($id){
+		$db = JFactory::getDbo();
+		$query = "select title,id from yami_categories where parent_id=".$db->escape($id)." and level=3 ";
+		$db->setQuery($query);
+		$rows = $db->loadObjectList();
+		$content = '';
+		foreach($rows as $row){
+			if($row->title !='城市介绍' && $row->title !='展会活动日程' ){
+				$query = "select * from yami_content where catid=".$db->escape($row->id)." order by created,images DESC limit 6";
+				$db->setQuery($query);
+				$content .= ' <div class="epidemic2">
+									<h2><a href="'.JRoute::_('index.php?option=com_content&view=category&id='.$row->id).'">更多</a>'.$row->title.'</h2>
+									<ul class="epidemic21">';
+				$results = $db->loadObjectList();
+				if($results){
+					foreach ($results as $key=>$result) {
+						$images = json_decode($result->images);
+						if ($images->image_intro_caption){
+							$title = htmlspecialchars($images->image_intro_caption);
+						}else{
+							$title='';
+						}
+						if($key == 5){
+							$content .="<li class='' style='margin-right:0;'>";
+						}else{
+							$content .=  '<li class="">';
+						}
+						$content .=  '
+									<p><a href="#"><img title="' .$title .'" src="'.htmlspecialchars($images->image_intro).'" width="110" height="110" alt="'.htmlspecialchars($images->image_intro_alt).'"/></a></p>
+									<p class="Txt"><a href="'.JRoute::_('index.php?option=com_content&view=article&catid=88&id='.$result->id).'">'.$result->title.'</a></p><p class="Date">'.date('Y-m-d', strtotime($result->created) ).'</p>
+								</li>';
+					}
+				}
+				$content .= '</ul></div>';
+
+			}
+		}
+		return $content;
+	}
+	/* @purpose 获取城市介绍内容
+	 * @param $id int 城市介绍菜单id
+	 */
+	public function getCityIntroduced($catId){
+			$db = JFactory::getDbo();
+			$query = "select id from yami_categories where parent_id=104";
+			$db->setQuery($query);
+			$result = $db->loadResultArray();
+			$ids = implode(',',$result);
+			$query = "select * from yami_content where catid in (".$db->escape($ids).") order by created,images DESC limit 6";
+			$db->setQuery($query);
+			$content = '';
+			$results = $db->loadObjectList();
+			if($results){
+				foreach ($results as $key=>$result) {
+					$images = json_decode($result->images);
+					$content .= '<div class="epidemic_227"><a href="#"><img src="'.htmlspecialchars($images->image_intro).'" width="227" height="152" /></a><div class="epTxt"><a href="#">'. $result->title .'</a></div></div>';
+				}
+			}
+		return $content;
+	}
+	/* @purpose 获取展会活动内容
+	 * @param $id int 展会活动菜单id
+	 */
+	public function getExhibitionActivity($catId){
+			$db = JFactory::getDbo();
+			$query = "select * from yami_content where catid=".$db->escape($catId)." order by created,images DESC limit 6";
+			$db->setQuery($query);
+			$content = '';
+			$results = $db->loadObjectList();
+			if($results){
+				$content .= '<div class="yamitable">
+									<li class="tablleTit">
+										<div class="time">时间</div>
+										<div class="locale">地点</div>
+										<div class="name">展会名称</div>
+										<div class="link">相关链接</div>
+									</li>';
+				foreach ($results as $key=>$result) {
+					$content .= '
+										<li class="tablleList">
+											<div class="time">2013.03.23</div>
+											<div class="locale">巴黎</div>
+											<div class="name">2013巴黎时装周</div>
+											<div class="link">http://www.parisfashionweek.com</div>
+										</li> ';
+				}
+				$content .='</div>';
+			}
+		return $content;
+	}	
+	/* @purpose 获取品牌列表内容
+	 * @param $id int 品牌列表菜单id
+	 */
+	public function getPopularBrand($catId){
+			$db = JFactory::getDbo();
+			$query = "select id from yami_categories where parent_id=$catId";
+			$db->setQuery($query);
+			$result = $db->loadResultArray();			
+			$ids = implode(',',$result);
+			$query = "select * from yami_content where catid in (".$db->escape($ids).") order by created,images DESC limit 12";
+			$db->setQuery($query);
+			$content = '';
+			$results = $db->loadObjectList();
+			if($results){
+				foreach ($results as $key=>$result) {
+					$images = json_decode($result->images);
+					$content .= ' <li><a href="#"><img src="'.htmlspecialchars($images->image_intro).'" width="112" height="112"><font>'. $result->title .'</font></a></li> ';
+				}
+			}
+		return $content;
+	}
+	/* @purpose 获取品牌列表内容
+	 * @param $id int 品牌列表菜单id
+	 */
+	public function getBrand($catId){
+			$db = JFactory::getDbo();
+			$query = "select id,title from yami_categories where parent_id=$catId";
+			$db->setQuery($query);
+			$results = $db->loadObjectList();
+			$content = '';
+			foreach($results as $result){
+				$content .=  '<div class="BrandWordListTitle" id="'. $result->title .'">'.$result->title.'</div>';
+				$query = "select * from yami_content where catid=".$db->escape($result->id)." order by catid ";
+				$db->setQuery($query);
+				$lists = $db->loadObjectList();
+				if($results){
+					$content .='<ul class="BrandWordList">';
+					foreach ($lists as $list) {
+						$content .='<li><a href="#">'.$list->title.'</a></li>';
+					}
+					$content .= '<div class="clearfix"></div> </ul> ';
+				}
+			}
+		return $content;
+	}
 }

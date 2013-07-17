@@ -145,58 +145,6 @@ endif;
 				</ul>
 			</fieldset>
 		<?php  endif; ?>
-		<?php  $fieldSets = $this->form->getFieldsets('attribs'); ?>
-			<?php foreach ($fieldSets as $name => $fieldSet) : ?>
-				<?php // If the parameter says to show the article options or if the parameters have never been set, we will
-					  // show the article options. ?>
-
-				<?php if ($params['show_article_options'] || (( $params['show_article_options'] == '' && !empty($editoroptions) ))): ?>
-					<?php // Go through all the fieldsets except the configuration and basic-limited, which are
-						  // handled separately below. ?>
-
-					<?php if ($name != 'editorConfig' && $name != 'basic-limited') : ?>
-						<?php echo JHtml::_('sliders.panel', JText::_($fieldSet->label), $name.'-options'); ?>
-						<?php if (isset($fieldSet->description) && trim($fieldSet->description)) : ?>
-							<p class="tip"><?php echo $this->escape(JText::_($fieldSet->description));?></p>
-						<?php endif; ?>
-						<fieldset class="panelform">
-							<ul class="adminformlist">
-							<?php foreach ($this->form->getFieldset($name) as $field) : ?>
-								<li><?php echo $field->label; ?>
-								<?php echo $field->input; ?></li>
-							<?php endforeach; ?>
-							</ul>
-						</fieldset>
-					<?php endif ?>
-					<?php // If we are not showing the options we need to use the hidden fields so the values are not lost.  ?>
-				<?php  elseif ($name == 'basic-limited'): ?>
-						<?php foreach ($this->form->getFieldset('basic-limited') as $field) : ?>
-							<?php  echo $field->input; ?>
-						<?php endforeach; ?>
-
-				<?php endif; ?>
-			<?php endforeach; ?>
-			<?php // Not the best place, but here for continuity with 1.5/1/6/1.7 ?>
-			<fieldset class="panelform">
-				<ul class="adminformlist">
-						<li><?php echo $this->form->getLabel('xreference'); ?>
-						<?php echo $this->form->getInput('xreference'); ?></li>
-				</ul>
-			</fieldset>
-				<?php // We need to make a separate space for the configuration
-				      // so that those fields always show to those wih permissions ?>
-				<?php if ( $this->canDo->get('core.admin')   ):  ?>
-					<?php  echo JHtml::_('sliders.panel', JText::_('COM_CONTENT_SLIDER_EDITOR_CONFIG'), 'configure-sliders'); ?>
-						<fieldset  class="panelform" >
-							<ul class="adminformlist">
-							<?php foreach ($this->form->getFieldset('editorConfig') as $field) : ?>
-								<li><?php echo $field->label; ?>
-								<?php echo $field->input; ?></li>
-							<?php endforeach; ?>
-							</ul>
-						</fieldset>
-				<?php endif ?>
-
 		<?php // The url and images fields only show if the configuration is set to allow them.  ?>
 		<?php // This is for legacy reasons. ?>
 		<?php if ($params['show_urls_images_backend']): ?>
@@ -208,14 +156,6 @@ endif;
 					<?php echo $this->form->getInput('images'); ?></li>
 
 					<?php foreach($this->form->getGroup('images') as $field): ?>
-						<li>
-							<?php if (!$field->hidden): ?>
-								<?php echo $field->label; ?>
-							<?php endif; ?>
-							<?php echo $field->input; ?>
-						</li>
-					<?php endforeach; ?>
-						<?php foreach($this->form->getGroup('urls') as $field): ?>
 						<li>
 							<?php if (!$field->hidden): ?>
 								<?php echo $field->label; ?>

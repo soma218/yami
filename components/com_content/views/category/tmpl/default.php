@@ -14,6 +14,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 ?>
 
 <div class="conright">
+
 <div class="lifestyle">
 	<?php if ($this->params->get('show_page_heading')) : ?>
 	<h1>
@@ -43,18 +44,26 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 	<?php endif; ?>
 
 	<div class="cat-items">
-		<?php echo $this->loadTemplate('articles'); ?>
+	
+		<?php
+	if(JRequest::getVar('id') == 109){
+		echo $this->loadTemplate('activities');
+	}elseif(JRequest::getVar('id') == 104){
+		echo $this->loadTemplate('citylist');
+	}else{
+		echo $this->loadTemplate('articles');
+	}		?>
 	</div>
 
-	<?php if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
-	<div class="cat-children">
-		<?php if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
+	<?php // if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
+	<!--<div class="cat-children">
+		<?php // if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
 		<h3>
-			<?php echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?>
+			<?php //echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?>
 		</h3>
-		<?php endif; ?>
-		<?php echo $this->loadTemplate('children'); ?>
-	</div>
-	<?php endif; ?>
+		<?php //endif; ?>
+		<?php //echo $this->loadTemplate('children'); ?>
+	</div> -->
+	<?php //endif; ?>
 </div>
 </div>

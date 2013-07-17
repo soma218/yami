@@ -28,9 +28,12 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 
 <?php else : ?>
 
-    <h1>主导趋势</h1>
+    <h1><?php echo($this->items[0]->category_title); ?></h1>
 <form action="<?php echo htmlspecialchars(JFactory::getURI()->toString()); ?>" method="post" name="adminForm" id="adminForm">
     <div class="lifestyle1">
+	
+	
+	
       <div class="px">排序：</div>
     <div class="rq"><?php $date='created'; if ($date == "created") : ?>
 						<?php echo JHtml::_('grid.sort', 'COM_CONTENT_'.$date.'_DATE', 'a.created', $listDirn, $listOrder); ?>
@@ -65,11 +68,15 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		<input type="hidden" name="limitstart" value="" />
 	</fieldset>
 	<?php endif; ?>
+	
+	
+	
 		    <ul class="epidemic21">
-		<?php foreach ($this->items as $i => $article) : ?>
-
+		<?php foreach ($this->items as $i => $article) : 
+					$images = json_decode($article->images);
+			?>
 				<?php if (in_array($article->access, $this->user->getAuthorisedViewLevels())) : ?>
-		    	<li><p><a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($article->slug, $article->catid)); ?>"><img src="images/ep_02.jpg" width="110" height="110" /></a></p><p class="Txt"><a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($article->slug, $article->catid)); ?>"><?php echo $this->escape($article->title); ?></a></p><p class="Date"><?php echo JHtml::_('date', $article->displayDate, $this->escape(
+		    	<li><p><a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($article->slug, $article->catid)); ?>"><img  src="<?php echo htmlspecialchars($images->image_intro) ?>"" width="110" height="110" /></a></p><p class="Txt"><a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($article->slug, $article->catid)); ?>"><?php echo $this->escape($article->title); ?></a></p><p class="Date"><?php echo JHtml::_('date', $article->displayDate, $this->escape(
 						$this->params->get('date_format', JText::_('DATE_FORMAT_LC3')))); ?></p></li>
 
 				<?php else : // Show unauth links. ?>

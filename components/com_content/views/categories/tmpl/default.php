@@ -57,10 +57,53 @@ case 84:
 case 83:
 		require_once('shineibaogao.php');
 		break;
+case 116:
+		require_once('yuanchuangsheji.php');
+		break;
+case 118:
+		require_once('shejixiazai.php');
+		break;
 default:
 null;
 }
-echo $this->tabcontent;
+
+
+if(JRequest::getVar('id') != 116 && JRequest::getVar('id') != 118 && JRequest::getVar('id') != 87){
+
+$content ='';
+		 foreach($this->tabcontent as $catid=>$row){
+			if($row->catTile !='城市介绍' && $row->catTile !='展会活动日程' ){
+				$content .= ' <div class="epidemic2">
+									<h2><a href="'.JRoute::_('index.php?option=com_content&view=category&id='.$catid).'">更多</a>'.$row->catTile.'</h2>
+									<ul class="epidemic21">';
+				if(sizeof($row->result) > 0){
+					foreach ($row->result as $key=>$result) {
+						$images = json_decode($result->images);
+						if ($images->image_intro_caption){
+							$title = htmlspecialchars($images->image_intro_caption);
+						}else{
+							$title='';
+						}
+						if($key == 5){
+							$content .="<li class='' style='margin-right:0;'>";
+						}else{
+							$content .=  '<li class="">';
+						}
+						$content .=  '
+									<p><a href="'.JRoute::_('index.php?option=com_content&view=article&catid='.$result->catid.'&id='.$result->id).'"><img title="' .$title .'" src="'.htmlspecialchars($images->image_intro).'" width="110" height="110" alt="'.htmlspecialchars($images->image_intro_alt).'"/></a></p>
+									<p class="Txt"><a href="'.JRoute::_('index.php?option=com_content&view=article&catid='.$result->catid.'&id='.$result->id).'">'.$result->title.'</a></p><p class="Date">'.date('Y-m-d', strtotime($result->created) ).'</p>
+								</li>';
+					}
+				}
+				$content .= '</ul></div>';
+
+			}
+		}
+		echo $content;
+}
+if(JRequest::getVar('id') == 86){
+require_once('zuixinzhanhuihuodong.php');
+}
 ?>
   
 </div>

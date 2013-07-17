@@ -1888,7 +1888,6 @@ abstract class JDatabase implements JDatabaseInterface
 	{
 		// Deprecation warning.
 		JLog::add('JDatabase::stderr() is deprecated.', JLog::WARNING, 'deprecated');
-
 		if ($this->errorNum != 0)
 		{
 			return JText::sprintf('JLIB_DATABASE_ERROR_FUNCTION_FAILED', $this->errorNum, $this->errorMsg)

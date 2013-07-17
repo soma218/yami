@@ -11,7 +11,37 @@ defined('_JEXEC') or die;
 $lang = JFactory::getLanguage();
 $upper_limit = $lang->getUpperLimitSearchWord();
 ?>
-
+    <dl class="search01">
+      <dd>关  键  词:</dd><dt class="Radio"><input type="text" style="margin-left:12px; width:190px; height:22px; line-height:22px; margin-top:-5px;"/></dl>
+    <dl class="search01">
+      <dd>发布日期:</dd><dt class="Radio"><a href="#"><i></i>全部</a><a href="#"><i class="Radio1"></i>最新</a><a href="#"><i></i>本周</a><a href="#"><i></i>本周</a><a href="#"><i></i>本季</a></dt></dl>
+    <dl class="search01">
+      <dd>国　　家:</dd><dt class="Mulcho"><a href="#"><i></i>全部</a><a href="#"><i class="Mulcho1"></i>德国</a><a href="#"><i></i>法国</a><a href="#"><i></i>日本</a><a href="#"><i></i>韩国</a></dt></dl>
+      <dl class="search01">
+      <dd>城　　市:</dd>
+      <dt class="Mulcho"><a href="#"><i></i>全部</a><a href="#"><i class="Mulcho1"></i>米兰</a><a href="#"><i></i>佛罗伦萨</a><a href="#"><i></i>佛罗伦萨</a><a href="#"><i></i>普罗旺斯</a><a href="#"><i></i>纽约</a><a href="#"><i></i>其他</a></dt></dl>
+      <dl class="search01">
+      <dd>来　　源:</dd>
+      <dt class="Mulcho"><a href="#"><i></i>全部</a><a href="#"><i class="Mulcho1"></i>会展</a><a href="#"><i></i>街拍</a><a href="#"><i></i>设计作品</a><a href="#"><i></i>零售</a><a href="#"><i></i>店铺</a><a href="#"><i></i>采购</a><a href="#"><i></i>新闻</a><a href="#"><i></i>杂志</a><a href="#"><i></i>古董</a></dt></dl>
+      <dl class="search01">
+      <dd>风　　格:</dd>
+      <dt class="Mulcho"><a href="#"><i></i>美式田园</a><a href="#"><i class="Mulcho1"></i>欧式简约</a><a href="#"><i></i>日本</a><a href="#"><i></i>韩国</a><a href="#"><i></i>英国</a><a href="#"><i></i>其他</a></dt></dl>
+      <dl class="search01" style="border-bottom-style:solid;">
+      <dd>会　　展:</dd>
+      <dt class="Mulcho"><a href="#"><i></i>法兰克福家纺展</a><a href="#"><i class="Mulcho1"></i>欧式简约</a><a href="#"><i></i>法国</a><a href="#"><i></i>日本</a><a href="#"><i></i>韩国</a><a href="#"><i></i>其他</a></dt></dl>
+    <div class="Submit"><a href="" class="Submit2">重&nbsp;置</a><a href="" class="Submit1">提&nbsp;交</a></div>
+    <div class="searchtitle2">搜索结果：600 图片</div>
+    <div class="lifestyle1">
+    <div class="px">排序：</div>
+    <div class="rq"><a href="#" class="rqa"><span>发布日期</span></a></div>
+    <div class="ll"><a href="#"><span>浏览次数</span></a></div>
+    <div class="cs"><a href="#"><span>选择城市</span></a></div>
+    <div class="Paging"><em><a href="#">&lt;</a></em><span><a href="#" class="spana">1</a>|<a href="#">2</a>|<a href="#">3</a>|<a href="#">4</a>|<a href="#">5</a>|<a href="#">6</a>|<a href="#">7</a>|<a href="#">...</a></span><em><a href="#">&gt;</a></em></div>
+    </div>
+    </div>
+    </div>
+    <div class="conbottom"><img src="images/conzd2.jpg" width="962" height="8" /></div>
+</div>
 <form id="searchForm" action="<?php echo JRoute::_('index.php?option=com_search');?>" method="post">
 
 	<fieldset class="word">
