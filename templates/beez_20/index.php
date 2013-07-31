@@ -111,9 +111,18 @@ $userId = $user->get('id');
 <div class="nav homeNav">
       <jdoc:include type="modules" name="tab_menu"/>
 
-  <div class="search">
+<!--  <div class="search">
     <input name="" type="text" />
-    <a href="#" class="SeaButton"></a> <span><a href="<?php echo JRoute::_('index.php?option=com_search') ?>">高级搜索</a></span> </div><!-- search -->
+    <a href="#" class="SeaButton"></a> <span><a href="<?php echo JRoute::_('index.php?option=com_search&view=search') ?>">高级搜索</a></span> </div> -->
+<div class="search">
+	  <form method="post" action="<?php echo JRoute::_('index.php?option=com_search&view=search') ?>" role="search" name="search">
+			<input type="text" onfocus="if (this.value=='搜索...') this.value='';" onblur="if (this.value=='') this.value='搜索...';" value="搜索..." size="20"  maxlength="20" id="mod-search-searchword" name="searchword">
+			    <a href="javascript:void(0);" class="SeaButton" onclick="document.search.submit();"></a> <span><a href="javascript:void(0);" onclick="document.search.submit();">高级搜索</a></span> 
+		<input type="hidden" value="search" name="task">
+		<input type="hidden" value="com_search" name="option">
+	</form>
+</div>
+  <!-- search -->
   <div class="hoanbor"><img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/home_borber.jpg" width="960" height="8" /></div><!-- hoanbor -->
 </div><!-- nav homeNav -->
 	<jdoc:include type="message" />

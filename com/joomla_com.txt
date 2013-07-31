@@ -1,3 +1,0 @@
-购物车插件：virturemart
-图片管理插件：
-标签管理组件：tortags

@@ -41,6 +41,9 @@ class ContentViewCategory extends JViewLegacy
 		$children	= $this->get('Children');
 		$parent		= $this->get('Parent');
 		$pagination = $this->get('Pagination');
+		$category_type = $this->get('CategoryType');
+		$brand = $this->get('Brand');
+		$popularbrand = $this->get('PopularBrand');
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
 			JError::raiseError(500, implode("\n", $errors));
@@ -172,7 +175,11 @@ class ContentViewCategory extends JViewLegacy
 		$this->assignRef('params', $params);
 		$this->assignRef('parent', $parent);
 		$this->assignRef('pagination', $pagination);
+		$this->assignRef('brand', $brand);
 		$this->assignRef('user', $user);
+		$this->assignRef('popularbrand', $popularbrand);
+		$this->assignRef('category_type', $category_type);
+		
 
 		$this->_prepareDocument();
 
@@ -205,7 +212,6 @@ class ContentViewCategory extends JViewLegacy
 		if ($menu && ($menu->query['option'] != 'com_content' || $menu->query['view'] == 'article' || $id != $this->category->id)) {
 			$path = array(array('title' => $this->category->title, 'link' => ''));
 			$category = $this->category->getParent();
-
 			while (($menu->query['option'] != 'com_content' || $menu->query['view'] == 'article' || $id != $category->id) && $category->id > 1)
 			{
 				$path[] = array('title' => $category->title, 'link' => ContentHelperRoute::getCategoryRoute($category->id));

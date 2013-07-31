@@ -42,7 +42,6 @@ endif;
 if (!empty($this->item->attribs['show_urls_images_backend'])):
 		$params['show_urls_images_backend'] = $this->item->attribs['show_urls_images_backend'];
 endif;
-
 ?>
 
 <script type="text/javascript">

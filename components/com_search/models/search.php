@@ -125,7 +125,6 @@ class SearchModelSearch extends JModelLegacy
 		if (empty($this->_data))
 		{
 			$areas = $this->getAreas();
-
 			JPluginHelper::importPlugin('search');
 			$dispatcher = JDispatcher::getInstance();
 			$results = $dispatcher->trigger('onContentSearch', array(
@@ -206,5 +205,27 @@ class SearchModelSearch extends JModelLegacy
 		}
 
 		return $this->_areas;
+	}
+	
+	/**
+	 * @purpose 获取标签列表
+	 */
+	public function getTags(){
+			$db = JFactory::getDbo();
+			$query = "SELECT category_id FROM `yami_jshopping_categories` where `name_zh-CN`='标签分类'";
+			$db->setQuery($query);
+			$parent_id = $db->loadObject();
+			$query = "SELECT category_id, category_parent_id, `name_zh-CN` as name, `short_description_zh-CN` as short_description, category_publish, category_image FROM `yami_jshopping_categories` where `category_parent_id`=".$parent_id->category_id." ORDER BY category_parent_id, `ordering` asc";
+			$db->setQuery($query);
+			$results = $db->loadObjectList();
+			$list = new stdclass();
+			foreach($results as $tagLevel1){
+				$query = "SELECT ordering, category_id, category_parent_id, `name_zh-CN` as name, `short_description_zh-CN` as short_description, category_publish, category_image FROM `yami_jshopping_categories` where `category_parent_id`=".$tagLevel1->category_id."
+					  ORDER BY category_parent_id, `ordering` asc";
+				$db->setQuery($query);
+				$id =$tagLevel1->category_id;
+				$list->$id =(object)array('parent_name'=>$tagLevel1->name,'list'=>($db->loadObjectList()));
+			}	
+			return $list;
 	}
 }

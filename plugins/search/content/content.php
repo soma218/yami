@@ -48,7 +48,15 @@ class plgSearchContent extends JPlugin
 
 		require_once JPATH_SITE . '/components/com_content/helpers/route.php';
 		require_once JPATH_ADMINISTRATOR . '/components/com_search/helpers/search.php';
-
+		
+		// 根据标签精准条件搜索
+		$listTag = JRequest::getVar('tags');
+		$tagWhere ='';
+		if(isset($listTag)){
+			$listTag =(is_array($listTag))?implode(',',$listTag):$listTag;
+			$tagWhere = 'cat.category_id in ('.$listTag.') and '; 
+		}
+		
 		$searchText = $text;
 		if (is_array($areas)) {
 			if (!array_intersect($areas, array_keys($this->onContentSearchAreas()))) {
@@ -57,8 +65,8 @@ class plgSearchContent extends JPlugin
 		}
 
 		$sContent		= $this->params->get('search_content',		1);
-		$sArchived		= $this->params->get('search_archived',		1);
-		$limit			= $this->params->def('search_limit',		50);
+		// $limit			= $this->params->def('search_limit',		20);
+		$limit			= 1;
 
 		$nullDate		= $db->getNullDate();
 		$date = JFactory::getDate();
@@ -103,26 +111,30 @@ class plgSearchContent extends JPlugin
 
 		$morder = '';
 		switch ($ordering) {
-			case 'oldest':
-				$order = 'a.created ASC';
+			case 'last':
+				$order = 'a.created DESC';
+				$morder ='pr.product_date_added DESC';
 				break;
 
 			case 'popular':
 				$order = 'a.hits DESC';
+				$morder = 'pr.hits DESC';
 				break;
 
-			case 'alpha':
+			case 'lastWeek':
 				$order = 'a.title ASC';
+				$morder = 'pr.hits DESC';
 				break;
 
-			case 'category':
+			case 'lastMouth':
 				$order = 'c.title ASC, a.title ASC';
 				$morder = 'a.title ASC';
 				break;
 
-			case 'newest':
+			case 'lastQuarter':
 			default:
 				$order = 'a.created DESC';
+				$morder = 'pr.hits DESC';
 				break;
 		}
 
@@ -150,7 +162,7 @@ class plgSearchContent extends JPlugin
 			$case_when1 .= ' ELSE ';
 			$case_when1 .= $c_id.' END as catslug';
 
-			$query->select('a.title AS title, a.metadesc, a.metakey, a.created AS created');
+			$query->select('a.images as images, a.title AS title, a.metadesc, a.metakey, a.created AS created');
 			$query->select($query->concatenate(array('a.introtext', 'a.fulltext')).' AS text');
 			$query->select('c.title AS section, '.$case_when.','.$case_when1.', '.'\'2\' AS browsernav');
 
@@ -172,7 +184,6 @@ class plgSearchContent extends JPlugin
 			$db->setQuery($query, 0, $limit);
 			$list = $db->loadObjectList();
 			$limit -= count($list);
-
 			if (isset($list))
 			{
 				foreach($list as $key => $item)
@@ -181,89 +192,35 @@ class plgSearchContent extends JPlugin
 				}
 			}
 			$rows[] = $list;
-		}
-
-		// search archived content
-		if ($sArchived && $limit > 0)
-		{
-			$searchArchived = JText::_('JARCHIVED');
-
-			$query->clear();
-			//sqlsrv changes
-			$case_when = ' CASE WHEN ';
-			$case_when .= $query->charLength('a.alias');
-			$case_when .= ' THEN ';
-			$a_id = $query->castAsChar('a.id');
-			$case_when .= $query->concatenate(array($a_id, 'a.alias'), ':');
-			$case_when .= ' ELSE ';
-			$case_when .= $a_id.' END as slug';
-
-			$case_when1 = ' CASE WHEN ';
-			$case_when1 .= $query->charLength('c.alias');
-			$case_when1 .= ' THEN ';
-			$c_id = $query->castAsChar('c.id');
-			$case_when1 .= $query->concatenate(array($c_id, 'c.alias'), ':');
-			$case_when1 .= ' ELSE ';
-			$case_when1 .= $c_id.' END as catslug';
-
-			$query->select('a.title AS title, a.metadesc, a.metakey, a.created AS created, '
-			.$query->concatenate(array("a.introtext", "a.fulltext")).' AS text,'
-			.$case_when.','.$case_when1.', '
-			.'c.title AS section, \'2\' AS browsernav');
-			//.'CONCAT_WS("/", c.title) AS section, \'2\' AS browsernav' );
-			$query->from('#__content AS a');
-			$query->innerJoin('#__categories AS c ON c.id=a.catid AND c.access IN ('. $groups .')');
-			$query->where('('. $where .') AND a.state = 2 AND c.published = 1 AND a.access IN ('. $groups
-				.') AND c.access IN ('. $groups .') '
-				.'AND (a.publish_up = '.$db->Quote($nullDate).' OR a.publish_up <= '.$db->Quote($now).') '
-				.'AND (a.publish_down = '.$db->Quote($nullDate).' OR a.publish_down >= '.$db->Quote($now).')' );
-			$query->order($order);
-
-
-			// Filter by language
-			if ($app->isSite() && $app->getLanguageFilter()) {
-				$query->where('a.language in (' . $db->Quote($tag) . ',' . $db->Quote('*') . ')');
-				$query->where('c.language in (' . $db->Quote($tag) . ',' . $db->Quote('*') . ')');
-			}
-
+						$query->clear();
+	$query->select("cat.category_id,pr.product_id, pr.product_publish, pr.`name_zh-CN` as name, pr.`short_description_zh-CN` as short_description, man.`name_zh-CN` as man_name, GROUP_CONCAT(cat.`name_zh-CN` SEPARATOR '<br>') AS namescats, pr.product_ean as ean, pr.product_quantity as qty, pr.product_thumb_image as image, pr.product_price, pr.currency_id, pr.hits, pr.unlimited, pr.product_date_added, pr.label_id ");
+				$query->from('#__jshopping_products AS pr ');
+				$query->leftJoin('#__jshopping_products_to_categories AS pr_cat USING (product_id) ');
+				$query->leftJoin('#__jshopping_categories AS cat ON pr_cat.category_id=cat.category_id ');
+				$query->leftJoin('#__jshopping_manufacturers AS man ON pr.product_manufacturer_id=man.manufacturer_id');
+				$query->where($tagWhere.' pr.`name_zh-CN` like "%'.$db->escape($text, true).'%"');
+				$query->group('pr.product_id');
+				$query->order($morder);
 			$db->setQuery($query, 0, $limit);
-			$list3 = $db->loadObjectList();
-
-			// find an itemid for archived to use if there isn't another one
-			$item	= $app->getMenu()->getItems('link', 'index.php?option=com_content&view=archive', true);
-			$itemid = isset($item->id) ? '&Itemid='.$item->id : '';
-
-			if (isset($list3))
-			{
-				foreach($list3 as $key => $item)
-				{
-					$date = JFactory::getDate($item->created);
-
-					$created_month	= $date->format("n");
-					$created_year	= $date->format("Y");
-
-					$list3[$key]->href	= JRoute::_('index.php?option=com_content&view=archive&year='.$created_year.'&month='.$created_month.$itemid);
-				}
-			}
-
-			$rows[] = $list3;
+			$list = $db->loadObjectList();
+			$rows[] = $list;
 		}
 
 		$results = array();
-		if (count($rows))
+		if (count($rows) > 0)
 		{
+
 			foreach($rows as $row)
 			{
 				$new_row = array();
 				foreach($row as $key => $article) {
-					if (searchHelper::checkNoHTML($article, $searchText, array('text', 'title', 'metadesc', 'metakey'))) {
+					// if (searchHelper::checkNoHTML($article, $searchText, array('text', 'title', 'metadesc', 'metakey'))) {
 						$new_row[] = $article;
-					}
+					// }
 				}
 				$results = array_merge($results, (array) $new_row);
 			}
 		}
-
 		return $results;
 	}
 }

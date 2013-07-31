@@ -1,65 +1,29 @@
 <?php defined('_JEXEC') or die(); ?>
-<?php $product = $this->product?>
+<?php $product = $this->product; ?>
 <?php include(dirname(__FILE__)."/load.js.php");?>
-<div class="jshop productfull">
+<div class="location">当前位置：<a href="Home.html">首页</a><a href="Epidemic.html"><?php echo $this->catlevel1->title ?></a><?php echo $this->catlevel2->title ?></div>
+<div class="content1">
+<div class="conleft">
+	<div class="conleftTitle"><?php echo $this->catlevel2->title ?></div>
+	 <ul class="conleftlist">
+		<?php
+		if(count($this->catlevel3) > 0):
+		 foreach($this->catlevel3 as $item):
+		  echo '<li><a href="'.JRoute::_('index.php?option=com_content&view=category&id='.$item->id).'">'.$item->title.'</a></li>';
+		 endforeach; 
+		 endif;?>
+		</ul>
+</div>
+<div class="conright">
 <form name="product" method="post" action="<?php print $this->action?>" enctype="multipart/form-data" autocomplete="off">
     
-    <h1><?php print $this->product->name?><?php if ($this->config->show_product_code){?> <span class="jshop_code_prod">(<?php print _JSHOP_EAN?>: <span id="product_code"><?php print $this->product->getEan();?></span>)</span><?php }?></h1>
-    <?php print $this->_tmp_product_html_start;?>
-    <?php if ($this->config->display_button_print) print printContent();?>
-    
-    <?php include(dirname(__FILE__)."/ratingandhits.php");?>
-        
+    <h1><?php print $this->product->name?><?php if ($this->config->show_product_code){?><?php }?></h1>
     <table class="jshop">
     <tr>
-        <td class="image_middle">
-            <?php print $this->_tmp_product_html_before_image;?>
-            <?php if ($product->label_id){?>
-                <div class="product_label">
-                    <?php if ($product->_label_image){?>
-                        <img src="<?php print $product->_label_image?>" alt="<?php print htmlspecialchars($product->_label_name)?>" />
-                    <?php }else{?>
-                        <span class="label_name"><?php print $product->_label_name;?></span>
-                    <?php }?>
-                </div>
-            <?php }?>
-            <?php if (count($this->videos)){?>
-                <?php foreach($this->videos as $k=>$video){?>
-					<?php if ($video->video_code){ ?>
-					<div style="display:none" class="video_full" id="hide_video_<?php print $k?>"><?php echo $video->video_code?></div>
-					<?php } else { ?>
-					<a style="display:none" class="video_full" id="hide_video_<?php print $k?>" href=""></a>
-					<?php } ?>
-                <?php } ?>
-            <?php }?>
-            
-            <span id='list_product_image_middle'>
-            <?php if(!count($this->images)){?>
-                <img id = "main_image" src = "<?php print $this->image_product_path?>/<?php print $this->noimage?>" alt = "<?php print htmlspecialchars($this->product->name)?>" />
-            <?php }?>
-            <?php foreach($this->images as $k=>$image){?>
-            <a class="lightbox" id="main_image_full_<?php print $image->image_id?>" href="<?php print $this->image_product_path?>/<?php print $image->image_full;?>" <?php if ($k!=0){?>style="display:none"<?php }?>>
-                <img id = "main_image_<?php print $image->image_id?>" src = "<?php print $this->image_product_path?>/<?php print $image->image_name;?>" alt="<?php print htmlspecialchars($image->_title)?>" title="<?php print htmlspecialchars($image->_title)?>" />
-                <div class="text_zoom">
-                    <img src="<?php print $this->path_to_image?>search.png" alt="zoom" /> <?php print _JSHOP_ZOOM_IMAGE?>
-                </div>
-            </a>
-            <?php }?>
-            </span>
-            <?php print $this->_tmp_product_html_after_image;?>
-            
-            <?php if ($this->config->product_show_manufacturer_logo && $this->product->manufacturer_info->manufacturer_logo!=""){?>
-            <div class="manufacturer_logo">
-                <a href="<?php print SEFLink('index.php?option=com_jshopping&controller=manufacturer&task=view&manufacturer_id='.$this->product->product_manufacturer_id, 2);?>">
-                    <img src="<?php print $this->config->image_manufs_live_path."/".$this->product->manufacturer_info->manufacturer_logo?>" alt="<?php print htmlspecialchars($this->product->manufacturer_info->name);?>" title="<?php print htmlspecialchars($this->product->manufacturer_info->name);?>" border="0" />
-                </a>
-            </div>
-            <?php }?>
-        </td>
         <td class="jshop_img_description">
             <?php print $this->_tmp_product_html_before_image_thumb;?>
             <span id='list_product_image_thumb'>
-            <?php if ( (count($this->images)>1) || (count($this->videos) && count($this->images)) ) {?>
+            <?php if ( (count($this->images)>=1) || (count($this->videos) && count($this->images)) ) {?>
                 <?php foreach($this->images as $k=>$image){?>
                     <img class="jshop_img_thumb" src="<?php print $this->image_product_path?>/<?php print $image->image_thumb?>" alt="<?php print htmlspecialchars($image->_title)?>" title="<?php print htmlspecialchars($image->_title)?>" onclick="showImage(<?php print $image->image_id?>)" />
                 <?php }?>
@@ -114,7 +78,7 @@
         </table>
     </div>
     <?php }?>
-    
+    <?php // product list ?>
     <?php if (count($this->product->freeattributes)){?>
     <div class="prod_free_attribs">
         <table class="jshop">
@@ -155,7 +119,7 @@
     <?php }?>
     </table>
     <?php }?>
-    
+
     <?php if ($this->product->product_old_price > 0){?>
     <div class="old_price">
         <?php print _JSHOP_OLD_PRICE?> <span class="old_price" id="old_price"><?php print formatprice($this->product->product_old_price)?></span>
@@ -233,9 +197,6 @@
             </td>        
             <td class="buttons">            
                 <input type="submit" class="button" value="<?php print _JSHOP_ADD_TO_CART?>" onclick="jQuery('#to').val('cart');" />
-                <?php if ($this->enable_wishlist){?>
-                    <input type="submit" class="button" value="<?php print _JSHOP_ADD_TO_WISHLIST?>" onclick="jQuery('#to').val('wishlist');" />
-                <?php }?>
                 <?php print $this->_tmp_product_html_buttons;?>
             </td>
             <td id="jshop_image_loading" style="display:none"></td>
@@ -251,17 +212,8 @@
 
 <?php print $this->_tmp_product_html_before_demofiles; ?>
 <div id="list_product_demofiles"><?php include(dirname(__FILE__)."/demofiles.php");?></div>
-<?php
-if ($this->config->product_show_button_back){?>
-<div class="button_back">
-<input type="button" class="button" value="<?php print _JSHOP_BACK;?>" onclick="<?php print $this->product->button_back_js_click;?>" />
+
+
 </div>
-<?php }?>
-<?php
-    print $this->_tmp_product_html_before_related;
-    include(dirname(__FILE__)."/related.php");
-    print $this->_tmp_product_html_before_review;
-    include(dirname(__FILE__)."/review.php");
-?>
-<?php print $this->_tmp_product_html_end;?>
+</div>
 </div>

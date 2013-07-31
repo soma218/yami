@@ -9,36 +9,18 @@
 // no direct access
 defined('_JEXEC') or die;
 ?>
-
-<dl class="search-results<?php echo $this->pageclass_sfx; ?>">
-<?php foreach($this->results as $result) : ?>
-	<dt class="result-title">
-		<?php echo $this->pagination->limitstart + $result->count.'. ';?>
-		<?php if ($result->href) :?>
-			<a href="<?php echo JRoute::_($result->href); ?>"<?php if ($result->browsernav == 1) :?> target="_blank"<?php endif;?>>
-				<?php echo $this->escape($result->title);?>
-			</a>
-		<?php else:?>
-			<?php echo $this->escape($result->title);?>
-		<?php endif; ?>
-	</dt>
-	<?php if ($result->section) : ?>
-		<dd class="result-category">
-			<span class="small<?php echo $this->pageclass_sfx; ?>">
-				(<?php echo $this->escape($result->section); ?>)
-			</span>
-		</dd>
+<ul class="epidemic21 lifeli">
+	<?php foreach($this->results as $result) : ?>
+	<?php if(isset($result->images)): 
+				$images = json_decode($result->images);?>
+			<li><p><a href="<?php echo JRoute::_($result->href); ?>"><img src="<?php  echo $images->image_intro;?>" width="110" height="110" /></a></p><p class="Txt"><a href="<?php echo JRoute::_($result->href); ?>"><?php echo $result->title; ?></a></p><p class="Date"><?php echo date('Y-m-d',strtotime($result->created)); ?></p>
+			</li>
+	<?php else: ?>
+			<li><p><a href="<?php echo JRoute::_('index.php?option=com_jshopping&controller=product&task=view&category_id='.$result->category_id.'&product_id='.$result->product_id); ?>"><img src="<?php  echo "components/com_jshopping/files/img_products/".$result->image;?>" width="110" height="110" /></a></p><p class="Txt"><a href="<?php echo JRoute::_('index.php?option=com_jshopping&controller=product&task=view&category_id='.$result->category_id.'&product_id='.$result->product_id); ?>"><?php echo $result->name; ?></a></p><p class="Date"><?php echo date('Y-m-d',strtotime($result->product_date_added)); ?></p>
+			</li>
 	<?php endif; ?>
-	<dd class="result-text">
-		<?php echo $result->text; ?>
-	</dd>
-	<?php if ($this->params->get('show_date')) : ?>
-		<dd class="result-created<?php echo $this->pageclass_sfx; ?>">
-			<?php echo JText::sprintf('JGLOBAL_CREATED_DATE_ON', $result->created); ?>
-		</dd>
-	<?php endif; ?>
-<?php endforeach; ?>
-</dl>
+	<?php endforeach; ?>
+</ul>
 
 <div class="pagination">
 	<?php echo $this->pagination->getPagesLinks(); ?>

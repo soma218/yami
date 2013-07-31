@@ -314,5 +314,37 @@ class ContentModelCategories extends JModelList
 			}
 		return $content;
 	}
-
+	/* @purpose 获取最新的分类内容
+	*/
+	public function getLastContent(){
+			$catId = JRequest::getVar('id');
+			$db = JFactory::getDbo();
+			$query = "select id from yami_categories where parent_id=$catId";
+			$db->setQuery($query);
+			$result = $db->loadResultArray();
+			$ids = implode(',',$result);
+			$query = "select * from yami_content where catid in (".$db->escape($ids).")  order by catid limit 2";
+			$db->setQuery($query);
+			$results = $db->loadObjectList();
+			return $results;
+	}
+	public function getItemImages(){
+			$catId = JRequest::getVar('id');
+			$db = JFactory::getDbo();
+			$query = "select category_id from yami_jshopping_categories where category_parent_id=0 and `name_zh-CN`='内容分类'"; //获取图片所在的顶级分类
+			$db->setQuery($query);
+			$category_id = $db->loadRow();
+			$query = "select cat.title,jcat.category_id,cat.id from yami_jshopping_categories as jcat left join yami_categories as cat on jcat.`name_zh-CN`=cat.title where jcat.category_parent_id=".$category_id[0]." and  cat.parent_id=$catId"; //获取图片的分类
+			$db->setQuery($query);
+			$rows = $db->loadObjectList();
+			// var_dump($rows);
+			$results = new stdclass();
+			foreach($rows as $row){ //from getTabContent
+				$query = "	 SELECT prod.product_id, pr_cat.category_id, prod.`name_zh-CN` as name, prod.`short_description_zh-CN` as short_description, prod.product_ean, prod.product_thumb_image, prod.product_price, prod.currency_id, prod.product_tax_id as tax_id, prod.product_old_price, prod.product_weight, prod.average_rating, prod.reviews_count, prod.hits, prod.weight_volume_units, prod.basic_price_unit_id, prod.label_id, prod.product_manufacturer_id, prod.min_price, prod.product_quantity, prod.different_prices,prod.product_date_added as created FROM `yami_jshopping_products` AS prod  LEFT JOIN `yami_jshopping_products_to_categories` AS pr_cat USING (product_id) WHERE pr_cat.category_id = '".$row->category_id."' AND prod.product_publish = '1'  AND prod.access IN (1,1,2,3)  ORDER BY name DESC LIMIT 0, 12";
+				$db->setQuery($query);
+				$id = $row->id;
+				$results->$id = (object)array('catTile'=>$row->title,'result'=>$db->loadObjectList());
+			}
+			return $results;
+	}
 }

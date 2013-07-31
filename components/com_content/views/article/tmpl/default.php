@@ -22,17 +22,20 @@ $user		= JFactory::getUser();
  <div class="conright">
 <?php
 // $this->itemtype 1:article 2:image 3:article+imagelist 4:pdf
-
- if($this->itemType == '文章'){
-require_once('news.php');
-}elseif($this->itemType == '图片'){
-require_once('images.php');
-}elseif($this->itemType == '图文列表'){
-require_once('news_images.php');
-}elseif($this->itemType == 'pdf文档'){
-require_once('pdf.php');
-}elseif($this->itemType == '城市列表'){
-require_once('citylist.php');
+if($this->itemType != '' ){
+	 if($this->itemType == 'article'){
+			require_once('news.php');
+	}elseif($this->itemType == 'image'){
+			require_once('images.php');
+	}elseif($this->itemType == 'article_image'){
+			require_once('news_images.php');
+	}elseif($this->itemType == 'pdf'){
+			require_once('pdf.php');
+	}elseif($this->itemType == 'city_detail'){
+			require_once('citylist.php');
+	}elseif($this->itemType == 'logo_detail'){
+			require_once('logolist.php');
+	}
 }
 ?>
 </div>

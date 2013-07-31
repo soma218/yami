@@ -45,25 +45,19 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
 	<div class="cat-items">
 	
-		<?php
-	if(JRequest::getVar('id') == 109){
-		echo $this->loadTemplate('activities');
-	}elseif(JRequest::getVar('id') == 104){
-		echo $this->loadTemplate('citylist');
-	}else{
-		echo $this->loadTemplate('articles');
-	}		?>
+	<?php 
+		switch($this->category_type){
+			case 'image': echo $this->loadTemplate('image');break; 
+			case 'article': echo $this->loadTemplate('article');break; 
+			case 'article_title': echo $this->loadTemplate('article_title');break; 
+			case 'image_article': echo $this->loadTemplate('image_article');break; 
+			case 'logo_list': echo $this->loadTemplate('logo_list');break; 
+			case 'activity_list': echo $this->loadTemplate('activity_list');break; 
+			case 'city_list': echo $this->loadTemplate('city_list');break; 
+			default: echo $this->loadTemplate('image');
+		
+		}
+	?>
 	</div>
-
-	<?php // if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
-	<!--<div class="cat-children">
-		<?php // if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
-		<h3>
-			<?php //echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?>
-		</h3>
-		<?php //endif; ?>
-		<?php //echo $this->loadTemplate('children'); ?>
-	</div> -->
-	<?php //endif; ?>
 </div>
 </div>

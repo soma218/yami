@@ -510,11 +510,12 @@ class ContentModelCategory extends JModelList
 	/* @purpose 获取品牌列表内容
 	 * @param $id int 品牌列表菜单id
 	 */
-	public function getPopularBrand($catId){
+	public function getPopularBrand(){
+			$catId = JRequest::getVar('id');
 			$db = JFactory::getDbo();
 			$query = "select id from yami_categories where parent_id=$catId";
 			$db->setQuery($query);
-			$result = $db->loadResultArray();			
+			$result = $db->loadResultArray();
 			$ids = implode(',',$result);
 			$query = "select * from yami_content where catid in (".$db->escape($ids).") order by created,images DESC limit 12";
 			$db->setQuery($query);
@@ -531,9 +532,10 @@ class ContentModelCategory extends JModelList
 	/* @purpose 获取品牌列表内容
 	 * @param $id int 品牌列表菜单id
 	 */
-	public function getBrand($catId){
+	public function getBrand(){
+			$catid = JRequest::getVar('id');
 			$db = JFactory::getDbo();
-			$query = "select id,title from yami_categories where parent_id=$catId";
+			$query = "select id,title from yami_categories where parent_id=$catid";
 			$db->setQuery($query);
 			$results = $db->loadObjectList();
 			$content = '';
@@ -551,5 +553,23 @@ class ContentModelCategory extends JModelList
 				}
 			}
 		return $content;
+	}
+	/*
+	* @purpose 获取分类的显示类型
+	*/
+	public function getCategoryType(){
+			$catid = JRequest::getVar('id');
+			$db = $this->getDbo();
+			 $db->getQuery(true);
+				$query = "SELECT fcv.value AS value, f.extras AS extras FROM yami_fieldsattach_categories_values AS fcv LEFT JOIN yami_fieldsattach AS f ON f.id = fcv.fieldsid left join yami_fieldsattach_groups as fg on fg.id=f.groupid WHERE fcv.catid = $catid AND fg.title = '分类显示类型'";
+				$db->setQuery($query);
+			$result = $db->loadObject();
+			if($result){
+			$extras = explode('
+',$result->extras);
+			$type = array_shift(explode('|',$extras[$result->value]));
+			return $type;
+			}
+			return false;
 	}
 }

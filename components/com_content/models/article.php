@@ -333,22 +333,26 @@ class ContentModelArticle extends JModelItem
 	/*
 	 * @purpose 获取文章显示类型
 	 */
-	public function getItemType($articleid){
+	public function getItemType(){
+			$catid		= JRequest::getVar('catid');
 			$db = $this->getDbo();
 			 $db->getQuery(true);
-			$query = "select fv.value as value, fg.extras as extras from #__fieldsattach_values as fv left join #__fieldsattach as fg on fg.id=fv.fieldsid where fv.articleid=$articleid and fg.title='类型'";
+			$query = "SELECT fcv.value AS value, f.extras AS extras FROM yami_fieldsattach_categories_values AS fcv LEFT JOIN yami_fieldsattach AS f ON f.id = fcv.fieldsid left join yami_fieldsattach_groups as fg on fg.id=f.groupid WHERE fcv.catid = $catid AND fg.title = '文章类型'";
 			$db->setQuery($query);
 			$result = $db->loadObject();
+			if($result){
 			$extras = explode('
 ',$result->extras);
-			$type = array_shift(explode('|',$extras[($result->value-1)]));
+			$type = array_shift(explode('|',$extras[$result->value]));
 			return $type;
+			}
+			return false;
 	}
 	
 	/*
 	* @purpose 获取城市模块内容
 	*/
-	public function getCityContent($articleid){
+	public function getCityContent(){
 			$catid = JRequest::getVar('catid');
 			$db = $this->getDbo();
 			 $db->getQuery(true);

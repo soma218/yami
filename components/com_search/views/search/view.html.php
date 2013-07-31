@@ -37,6 +37,7 @@ class SearchViewSearch extends JViewLegacy
 		$state		= $this->get('state');
 		$searchword = $state->get('keyword');
 		$params = $app->getParams();
+		$tags = $this->get('tags');
 
 		$menus	= $app->getMenu();
 		$menu	= $menus->getActive();
@@ -66,7 +67,7 @@ class SearchViewSearch extends JViewLegacy
 		if ($params->get('menu-meta_description'))
 		{
 			$this->document->setDescription($params->get('menu-meta_description'));
-		}
+		}	
 
 		if ($params->get('menu-meta_keywords'))
 		{
@@ -167,7 +168,7 @@ class SearchViewSearch extends JViewLegacy
 				$result->count		= $i + 1;
 			}
 		}
-
+		$listTag = JRequest::getVar('tags'); // get request tags
 		// Check for layout override
 		$active = JFactory::getApplication()->getMenu()->getActive();
 		if (isset($active->query['layout'])) {
@@ -180,6 +181,8 @@ class SearchViewSearch extends JViewLegacy
 		$this->assignRef('pagination',  $pagination);
 		$this->assignRef('results',		$results);
 		$this->assignRef('lists',		$lists);
+		$this->assignRef('tags',		$tags);
+		$this->assignRef('listTag',		$listTag);
 		$this->assignRef('params',		$params);
 
 		$this->ordering = $state->get('ordering');

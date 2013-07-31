@@ -33,33 +33,40 @@ class ContentViewCategories extends JViewLegacy
 		$items		= $this->get('Items');
 		$parent		= $this->get('Parent');
 		$ancestor		= $this->get('Ancestor'); 
-		// var_dump($items);
+		$lastcontent		= $this->get('LastContent'); 
 		// $new_content  = $model->getTabContent1($catId); 
-		// var_dump($new_content);
-		// var_dump($parent);
-		$tabcontent		= $model->getTabResults($catId); 
-		if($parent->title !='品牌观察'){
-			foreach($items as $item){
-				switch($item->title){
-					case '城市介绍':
-							$cityIntroduced 		= $model->getCityIntroduced($item->id); 
-							$this->assignRef('cityIntroduced',	$cityIntroduced);
-							break ;
-					case '展会活动日程':
-							$exhibitionActivity 		= $model->getExhibitionActivity($item->id);
-							$exhibitionActivity_id 		= $item->id;
-								
-							$this->assignRef('exhibitionActivity',	$exhibitionActivity);
-							$this->assignRef('exhibitionActivity_id',	$exhibitionActivity_id);
-							break ;
+
+
+		if(trim($ancestor->ancestor->title) == '设计下载'){
+			$tabcontent = $this->get('ItemImages'); 		
+		}else{	
+			$tabcontent		= $model->getTabResults($catId); 
+			if($parent->title =='品牌观察'){
+							$brand = $model->getBrand(110);
+					$popularBrand = $model->getPopularBrand(110);
+					$this->assignRef('popularBrand',		$popularBrand);
+					$this->assignRef('brand',		$brand);
+
+			}else{
+				foreach($items as $item){
+					switch($item->title){
+						case '城市介绍':
+								$cityIntroduced 		= $model->getCityIntroduced($item->id); 
+								$this->assignRef('cityIntroduced',	$cityIntroduced);
+								break ;
+						case '展会活动日程':
+								$exhibitionActivity 		= $model->getExhibitionActivity($item->id);
+								$exhibitionActivity_id 		= $item->id;
+									
+								$this->assignRef('exhibitionActivity',	$exhibitionActivity);
+								$this->assignRef('exhibitionActivity_id',	$exhibitionActivity_id);
+								break ;
+					}
 				}
+
 			}
-		}else{
-				$brand = $model->getBrand(110);
-				$popularBrand = $model->getPopularBrand(110);
-				$this->assignRef('popularBrand',		$popularBrand);
-				$this->assignRef('brand',		$brand);
 		}
+		// var_dump($tabcontent);
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
 			JError::raiseWarning(500, implode("\n", $errors));
@@ -94,6 +101,7 @@ class ContentViewCategories extends JViewLegacy
 		$this->assignRef('params',		$params);
 		$this->assignRef('parent',		$parent);
 		$this->assignRef('ancestor',		$ancestor);
+		$this->assignRef('lastcontent',		$lastcontent);
 		$this->assignRef('tabcontent',		$tabcontent);
 		$this->assignRef('items',		$items);
 

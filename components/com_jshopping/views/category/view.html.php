@@ -5,6 +5,7 @@ jimport( 'joomla.application.component.view');
 class JshoppingViewCategory extends JView
 {
     function display($tpl = null){
+
         parent::display($tpl);
 	}
 }

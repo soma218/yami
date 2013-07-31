@@ -12,6 +12,7 @@
    echo $pane->startPane('catPane');
    
    foreach($this->languages as $lang){
+   if($lang->language == 'zh-CN'){
        $name = "name_".$lang->language;
        $alias = "alias_".$lang->language;
        $description = "description_".$lang->language;
@@ -19,7 +20,6 @@
        $meta_title = "meta_title_".$lang->language;
        $meta_keyword = "meta_keyword_".$lang->language;
        $meta_description = "meta_description_".$lang->language;
-       
        $name_pane = _JSHOP_DESCRIPTION; if ($this->multilang) $name_pane.=" (".$lang->lang.")".'<img class = "tab_image" border = "0" src = "' . JURI::root() . '/administrator/components/com_jshopping/images/flags/' . $lang->lang . '.gif" />';
    
      echo $pane->startPanel($name_pane, $lang->lang.'-page');
@@ -90,6 +90,7 @@
      <div class="clr"></div>
      <?php
      echo $pane->endPanel(); 
+   }       
    }       
    echo $pane->startPanel(_JSHOP_MAIN_PARAMETERS, 'main-page');
    ?>

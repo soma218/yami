@@ -28,11 +28,10 @@ class ContentViewArticle extends JViewLegacy
 		$model		= $this->getModel(); 
 		$user		= JFactory::getUser();
 		$userId		= $user->get('id');
-		$articleid		= JRequest::getVar('id');
 		$dispatcher	= JDispatcher::getInstance();
 		$this->item		= $this->get('Item');
-		$this->itemType		= $model->getItemType($articleid);
-		$this->cityContent		= $model->getCityContent($articleid);
+		$this->itemType		= $this->get('ItemType');
+		$this->cityContent		= $this->get('CityContent');
 		$this->print	= JRequest::getBool('print');
 		$this->state	= $this->get('State');
 		$this->user		= $user;
